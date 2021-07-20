@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/OCTranspoButton"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -12,7 +13,43 @@
         android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/OCTranspo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="OCTranspo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/StationFinderButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Charging Station finder"
+        app:layout_constraintStart_toStartOf="@+id/OCTranspo"
+        app:layout_constraintTop_toBottomOf="@+id/OCTranspo" />
+
+    <Button
+        android:id="@+id/MovieButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Movie"
+        app:layout_constraintStart_toStartOf="@+id/StationFinderButton"
+        app:layout_constraintTop_toBottomOf="@+id/StationFinderButton" />
+
+    <Button
+        android:id="@+id/SoccerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Soccer Game"
+        app:layout_constraintStart_toStartOf="@+id/MovieButton"
+        app:layout_constraintTop_toBottomOf="@+id/MovieButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
