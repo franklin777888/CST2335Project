@@ -25,11 +25,11 @@ import java.util.Locale;
 public class MovieSearch extends AppCompatActivity {
 
     RecyclerView movieList;
-    ArrayList<ChatMessage> messages = new ArrayList<>();    // hold our typed messages
+    ArrayList<MovieInfor> movieInfors = new ArrayList<>();    // hold our typed messages
+    SharedPreferences prefs;
     SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a", Locale.getDefault());
     String time = sdf.format(new Date());
-
-    MyChatAdapter adt = new MyChatAdapter();
+    MovieAdapter movieAdapter = new MovieAdapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,28 +39,29 @@ public class MovieSearch extends AppCompatActivity {
         TextView myText = findViewById(R.id.textView);
         EditText myEdit = findViewById(R.id.movieTextField);
         Button myButton = findViewById(R.id.searchButton);
-        movieList = findViewById(R.id.myrecycler);
+        movieList = findViewById(R.id.movieRecycler);
         Context context = getApplicationContext();
+        prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
 
-        SharedPreferences prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
         String movieName = prefs.getString("movieName", "");
         myEdit.setText(movieName);
+
 
         myButton.setOnClickListener(    ( vw ) -> {
             String editString = myEdit.getText().toString();
             myText.setText("Your Movie Search is: " + editString);
             Toast.makeText(context, "Future use: search pass/fail",
                     Toast.LENGTH_SHORT).show();
-            ChatMessage thisMessage = new ChatMessage( myEdit.getText().toString(),1, time);
-            messages.add(thisMessage);
-            adt.notifyItemInserted(messages.size() -1);
+            MovieInfor thisMessage = new MovieInfor( myEdit.getText().toString(),1, time);
+            movieInfors.add(thisMessage);
+            movieAdapter.notifyItemInserted(movieInfors.size() -1);
         }   );
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        SharedPreferences prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
+        prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
         SharedPreferences.Editor  editor = prefs.edit();
         EditText myEdit = findViewById(R.id.movieTextField);
         editor.putString("movieName", myEdit.getText().toString());
@@ -76,32 +77,32 @@ public class MovieSearch extends AppCompatActivity {
         public MyRowViews(View itemView) {  // itemView is a ConstraintLayout, that has <TextView> as sub-item
             super(itemView);
 
+            messageText = itemView.findViewById(R.id.message);
+            timeText = itemView.findViewById(R.id.time);
+
             itemView.setOnClickListener( click -> {
-                // messages.remove(position);
+
                 AlertDialog.Builder builder = new AlertDialog.Builder( MovieSearch.this );
-                builder.setMessage("Do you want to delete the message: " + messageText.getText())
+                builder.setMessage("Do you want to delete the movie: " + messageText.getText())
                         .setTitle("Question:")
                         .setNegativeButton("No", (dialog, cl) -> {})
                         .setPositiveButton("Yes", (dialog, cl) -> {
 
                             position = getAbsoluteAdapterPosition();
 
-                            ChatMessage removedMessage = messages.get(position);
-                            messages.remove(position);
-                            adt.notifyItemRemoved(position);
+                            MovieInfor removedMessage = movieInfors.get(position);
+                            movieInfors.remove(position);
+                            movieAdapter.notifyItemRemoved(position);
 
                             Snackbar.make(messageText, "You deleted message #" + position, Snackbar.LENGTH_LONG)
                                     .setAction("Undo", clk -> {
-                                        messages.add(position, removedMessage);
-                                        adt.notifyItemInserted(position);
+                                        movieInfors.add(position, removedMessage);
+                                        movieAdapter.notifyItemInserted(position);
                                     })
                                     .show();
                         })
                         .create().show();
             });
-
-            messageText = itemView.findViewById(R.id.message);
-            timeText = itemView.findViewById(R.id.time);
         }
 
         public void setPosition(int p) {
@@ -109,12 +110,10 @@ public class MovieSearch extends AppCompatActivity {
         }
     }
 
-    private class MyChatAdapter extends RecyclerView.Adapter<MyRowViews>{
-        MyRowViews holder;
-        int position;
+    private class MovieAdapter extends RecyclerView.Adapter<MyRowViews>{
 
         public int getItemViewType(int position) {
-            ChatMessage thisRow = messages.get(position);
+            MovieInfor thisRow = movieInfors.get(position);
             return thisRow.getSend();
         }
 
@@ -129,27 +128,27 @@ public class MovieSearch extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(MyRowViews holder, int position) {
-            holder.messageText.setText( messages.get(position).getMessage() );
-            holder.timeText.setText( sdf.format (messages.get(position).getTimeSent()));
+            holder.messageText.setText( movieInfors.get(position).getMessage() );
+            holder.timeText.setText( sdf.format (movieInfors.get(position).getSearchTime()));
             holder.setPosition(position);
         }
 
         @Override
         public int getItemCount() {
 
-            return messages.size();
+            return movieInfors.size();
         }
     }
 
-    private class ChatMessage {
+    private class MovieInfor {
         public String message;
         public int send;
-        public String timeSent;
+        public String searchTime;
 
-        public ChatMessage(String message, int send, String timeSent) {
+        public MovieInfor(String message, int send, String searchTime) {
             this.message = message;
             this.send = send;
-            this.timeSent = timeSent;
+            this.searchTime = searchTime;
         }
 
         public String getMessage() {
@@ -160,8 +159,8 @@ public class MovieSearch extends AppCompatActivity {
             return send;
         }
 
-        public String getTimeSent() {
-            return timeSent;
+        public String getSearchTime() {
+            return searchTime;
         }
     }
 
