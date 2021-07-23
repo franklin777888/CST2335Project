@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -46,6 +47,8 @@ public class MovieSearch extends AppCompatActivity {
         String movieName = prefs.getString("movieName", "");
         myEdit.setText(movieName);
 
+        movieList.setAdapter(movieAdapter);
+        movieList.setLayoutManager(new LinearLayoutManager(this));
 
         myButton.setOnClickListener(    ( vw ) -> {
             String editString = myEdit.getText().toString();
