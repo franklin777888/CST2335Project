@@ -113,7 +113,7 @@ public class MovieSearch extends AppCompatActivity {
         }
     }
 
-    private class MovieAdapter extends RecyclerView.Adapter<MyRowViews>{
+    private class MovieAdapter extends RecyclerView.Adapter{
 
         public int getItemViewType(int position) {
             MovieInfor thisRow = movieInfors.get(position);
@@ -121,19 +121,23 @@ public class MovieSearch extends AppCompatActivity {
         }
 
         @Override
-        public MyRowViews onCreateViewHolder(ViewGroup parent, int viewType) {
-            LayoutInflater inflater = getLayoutInflater();  // for loading XML layouts
-            int layoutID;
-            layoutID = R.layout.sent_message;
-            View loadedRow  = inflater.inflate(layoutID, parent, false   );
-            return new MyRowViews(loadedRow);  // will initialize the TextView
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+            LayoutInflater inflater = getLayoutInflater();
+
+            int layoutID = R.layout.sent_message;
+
+            View loadedRow = inflater.inflate(layoutID, parent, false);
+            MyRowViews initRow = new MyRowViews((loadedRow));
+            return initRow;
         }
 
         @Override
-        public void onBindViewHolder(MyRowViews holder, int position) {
-            holder.messageText.setText( movieInfors.get(position).getMessage() );
-            holder.timeText.setText( sdf.format (movieInfors.get(position).getSearchTime()));
-            holder.setPosition(position);
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+            MyRowViews thisRowLayout = (MyRowViews) holder;
+            thisRowLayout.messageText.setText(movieInfors.get(position).getMessage());
+            thisRowLayout.timeText.setText(movieInfors.get(position).getSearchTime());
+            thisRowLayout.setPosition(position);
         }
 
         @Override
