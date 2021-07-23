@@ -3,4 +3,11 @@
 
     <string name="soccerRatingCmt">Your Comment:</string>
     <string name="soccerComment">Your Comment Is Important To Us!</string>
+    <string name="soccerNewsTitle">News Title</string>
+    <string name="soccerDate">News Date</string>
+    <string name="soccerLink">The Web Link</string>
+    <string name="soccerDescription">News Description</string>
+    <string name="soccerLinkBrsBtn">OPEN IN THE BROWSER</string>
+    <string name="soccerSaveBtn">SAVE TO MY FAVOURITE</string>
+    <string name="goToSoccerFavBtn">GO TO MY FAVOURITE NEWS</string>
 </resources>
