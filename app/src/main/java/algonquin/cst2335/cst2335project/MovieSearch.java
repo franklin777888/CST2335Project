@@ -4,18 +4,27 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
@@ -31,20 +40,57 @@ public class MovieSearch extends AppCompatActivity {
     SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a", Locale.getDefault());
     String time = sdf.format(new Date());
     MovieAdapter movieAdapter = new MovieAdapter();
+    Toolbar myToolbar = null;
+    EditText myEdit = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.movie_search);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.movie_search_actions, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        TextView messageText = findViewById(R.id.message);
+        TextView timeText = findViewById(R.id.time);
+
+
+        switch(item.getItemId()) {
+            case R.id.hide_views:
+                messageText.setVisibility(View.INVISIBLE);
+                timeText.setVisibility(View.INVISIBLE);
+                myEdit.setText("");
+                break;
+
+            case R.id.helpMenu:
+                runHelp();
+                break;
+
+            case 5:
+                String movieName = item.getTitle().toString();
+                myEdit.setText(movieName);
+                runSearchMovie(movieName);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void runHelp() {
+        Context context = getApplicationContext();
+        Toast.makeText(context, "This is help menu, details to be added",
+                Toast.LENGTH_LONG).show();
+    }
+
+    private void runSearchMovie(String movieName) {
 
         TextView myText = findViewById(R.id.textView);
         EditText myEdit = findViewById(R.id.movieTextField);
         Button myButton = findViewById(R.id.searchButton);
-        movieList = findViewById(R.id.movieRecycler);
         Context context = getApplicationContext();
-        prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
 
-        String movieName = prefs.getString("movieName", "");
+        movieName = prefs.getString("movieName", "");
         myEdit.setText(movieName);
 
         movieList.setAdapter(movieAdapter);
@@ -61,12 +107,39 @@ public class MovieSearch extends AppCompatActivity {
         }   );
     }
 
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.movie_search);
+
+        movieList = findViewById(R.id.movieRecycler);
+        prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
+
+        myToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, myToolbar, R.string.open, R.string.close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.popout_menu);
+        navigationView.setNavigationItemSelectedListener((item) -> {
+            onOptionsItemSelected(item);
+            drawer.closeDrawer(GravityCompat.START);
+            return false;
+        });
+
+    }
+
+
     @Override
     protected void onPause() {
         super.onPause();
         prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
         SharedPreferences.Editor  editor = prefs.edit();
-        EditText myEdit = findViewById(R.id.movieTextField);
+        myEdit = findViewById(R.id.movieTextField);
         editor.putString("movieName", myEdit.getText().toString());
         editor.apply();
     }
