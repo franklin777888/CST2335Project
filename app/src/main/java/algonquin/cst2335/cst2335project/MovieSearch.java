@@ -88,6 +88,7 @@ public class MovieSearch extends AppCompatActivity {
         TextView myText = findViewById(R.id.textView);
         EditText myEdit = findViewById(R.id.movieTextField);
         Button myButton = findViewById(R.id.searchButton);
+        movieList = findViewById(R.id.movieRecycler);
         Context context = getApplicationContext();
 
         movieName = prefs.getString("movieName", "");
@@ -113,7 +114,6 @@ public class MovieSearch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movie_search);
 
-        movieList = findViewById(R.id.movieRecycler);
         prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
 
         myToolbar = findViewById(R.id.toolbar);
