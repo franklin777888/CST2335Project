@@ -89,25 +89,19 @@ public class MovieSearch extends AppCompatActivity {
 
         myText = findViewById(R.id.textView);
         myEdit = findViewById(R.id.movieTextField);
-        //myButton = findViewById(R.id.searchButton);
         movieList = findViewById(R.id.movieRecycler);
         Context context = getApplicationContext();
-
-        //movieName = prefs.getString("movieName", "");
         myEdit.setText(movieName);
 
         movieList.setAdapter(movieAdapter);
         movieList.setLayoutManager(new LinearLayoutManager(this));
 
-        //myButton.setOnClickListener(    ( vw ) -> {
-            String editString = myEdit.getText().toString();
-            myText.setText("Your Movie Search is: " + editString);
-            Toast.makeText(context, "Future use: search pass/fail",
-                    Toast.LENGTH_SHORT).show();
-            MovieInfor thisMessage = new MovieInfor( myEdit.getText().toString(),1, time);
-            movieInfors.add(thisMessage);
-            movieAdapter.notifyItemInserted(movieInfors.size() -1);
-        //}   );
+        String editString = myEdit.getText().toString();
+        myText.setText("Your Movie Search is: " + editString);
+            Toast.makeText(context, "Future use: search pass/fail", Toast.LENGTH_SHORT).show();
+        MovieInfor thisMessage = new MovieInfor( myEdit.getText().toString(),1, time);
+        movieInfors.add(thisMessage);
+        movieAdapter.notifyItemInserted(movieInfors.size() -1);
     }
 
 
