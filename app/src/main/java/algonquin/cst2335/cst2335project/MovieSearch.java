@@ -42,6 +42,8 @@ public class MovieSearch extends AppCompatActivity {
     MovieAdapter movieAdapter = new MovieAdapter();
     Toolbar myToolbar = null;
     EditText myEdit = null;
+    Button myButton = null;
+    TextView myText = null;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,19 +87,19 @@ public class MovieSearch extends AppCompatActivity {
 
     private void runSearchMovie(String movieName) {
 
-        TextView myText = findViewById(R.id.textView);
-        EditText myEdit = findViewById(R.id.movieTextField);
-        Button myButton = findViewById(R.id.searchButton);
+        myText = findViewById(R.id.textView);
+        myEdit = findViewById(R.id.movieTextField);
+        //myButton = findViewById(R.id.searchButton);
         movieList = findViewById(R.id.movieRecycler);
         Context context = getApplicationContext();
 
-        movieName = prefs.getString("movieName", "");
+        //movieName = prefs.getString("movieName", "");
         myEdit.setText(movieName);
 
         movieList.setAdapter(movieAdapter);
         movieList.setLayoutManager(new LinearLayoutManager(this));
 
-        myButton.setOnClickListener(    ( vw ) -> {
+        //myButton.setOnClickListener(    ( vw ) -> {
             String editString = myEdit.getText().toString();
             myText.setText("Your Movie Search is: " + editString);
             Toast.makeText(context, "Future use: search pass/fail",
@@ -105,7 +107,7 @@ public class MovieSearch extends AppCompatActivity {
             MovieInfor thisMessage = new MovieInfor( myEdit.getText().toString(),1, time);
             movieInfors.add(thisMessage);
             movieAdapter.notifyItemInserted(movieInfors.size() -1);
-        }   );
+        //}   );
     }
 
 
@@ -116,8 +118,8 @@ public class MovieSearch extends AppCompatActivity {
 
         prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
 
-        Button myButton = findViewById(R.id.searchButton);
-        EditText myEdit = findViewById(R.id.movieTextField);
+        myButton = findViewById(R.id.searchButton);
+        myEdit = findViewById(R.id.movieTextField);
         myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
@@ -203,7 +205,6 @@ public class MovieSearch extends AppCompatActivity {
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            //DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
             LayoutInflater layoutInflater = getLayoutInflater();
 
