@@ -116,6 +116,8 @@ public class MovieSearch extends AppCompatActivity {
 
         prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
 
+        Button myButton = findViewById(R.id.searchButton);
+        EditText myEdit = findViewById(R.id.movieTextField);
         myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
@@ -129,6 +131,12 @@ public class MovieSearch extends AppCompatActivity {
             onOptionsItemSelected(item);
             drawer.closeDrawer(GravityCompat.START);
             return false;
+        });
+
+        myButton.setOnClickListener(clk -> {
+            String movieName = myEdit.getText().toString();
+            myToolbar.getMenu().add( 1, 5, 10, movieName).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+            runSearchMovie(movieName);
         });
 
     }
@@ -195,12 +203,13 @@ public class MovieSearch extends AppCompatActivity {
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            //DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
-            LayoutInflater inflater = getLayoutInflater();
+            LayoutInflater layoutInflater = getLayoutInflater();
 
             int layoutID = R.layout.sent_message;
 
-            View loadedRow = inflater.inflate(layoutID, parent, false);
+            View loadedRow = layoutInflater.inflate(layoutID, parent, false);
             MyRowViews initRow = new MyRowViews((loadedRow));
             return initRow;
         }
