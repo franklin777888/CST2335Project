@@ -11,7 +11,7 @@
     <item
         android:id="@+id/my_favourite"
         android:icon="@drawable/favourite"
-        android:title="Help Menu"
+        android:title="My Favourite"
         app:showAsAction="always" />
 
     <item
