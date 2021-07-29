@@ -1,6 +1,7 @@
 package algonquin.cst2335.cst2335project;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -80,9 +81,16 @@ public class MovieSearch extends AppCompatActivity {
     }
 
     private void runHelp() {
-        Context context = getApplicationContext();
-        Toast.makeText(context, "This is help menu, details to be added",
-                Toast.LENGTH_LONG).show();
+        AlertDialog alertDialog = new AlertDialog.Builder(MovieSearch.this).create();
+        alertDialog.setTitle("Help Menu");
+        alertDialog.setMessage("App Instruction to be shown below");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 
     private void runSearchMovie(String movieName) {
