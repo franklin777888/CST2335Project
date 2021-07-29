@@ -1,0 +1,7 @@
+
+<resources>
+    <string name="app_name">安卓手机应用项目</string>
+    <string name="movieName_message">输入电影名字</string>
+    <string name="button">搜索电影</string>
+    <string name="hint_message">在此输入电影英文名</string>
+</resources>
