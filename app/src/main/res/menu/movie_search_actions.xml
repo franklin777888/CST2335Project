@@ -9,7 +9,13 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/helpMenu"
+        android:id="@+id/my_favourite"
+        android:icon="@drawable/favourite"
+        android:title="Help Menu"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/help_menu"
         android:icon="@drawable/help"
         android:title="Help Menu"
         app:showAsAction="always" />

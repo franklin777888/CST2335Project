@@ -1,7 +1,6 @@
 package algonquin.cst2335.cst2335project;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,8 +65,12 @@ public class MovieSearch extends AppCompatActivity {
                 myEdit.setText("");
                 break;
 
-            case R.id.helpMenu:
+            case R.id.help_menu:
                 runHelp();
+                break;
+
+            case R.id.my_favourite:
+                runFavouriteSave();
                 break;
 
             case 5:
@@ -87,6 +89,11 @@ public class MovieSearch extends AppCompatActivity {
                 .setPositiveButton("OK", (click, arg) ->{
                 })
                 .show();
+    }
+
+    private void runFavouriteSave() {
+        Context context = getApplicationContext();
+        Toast.makeText(context, "To be added: this movie saved to my favourite", Toast.LENGTH_SHORT).show();
     }
 
     private void runSearchMovie(String movieName) {
