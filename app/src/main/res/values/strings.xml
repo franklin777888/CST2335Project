@@ -5,6 +5,8 @@
     <string name="movieName_message">Enter the name of a movie</string>
     <string name="button">Search Movie</string>
     <string name="hint_message">Type movie name here</string>
+    <string name="help_message_movie">See Instruction here</string>
+    <string name="help_title_movie">Help Menu</string>
 
 
 </resources>

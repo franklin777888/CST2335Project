@@ -4,4 +4,6 @@
     <string name="movieName_message">输入电影名字</string>
     <string name="button">搜索电影</string>
     <string name="hint_message">在此输入电影英文名</string>
+    <string name="help_message_movie">具体步骤如下</string>
+    <string name="help_title_movie">软件使用指南</string>
 </resources>

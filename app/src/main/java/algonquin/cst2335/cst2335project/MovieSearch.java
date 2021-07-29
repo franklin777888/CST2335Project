@@ -81,16 +81,12 @@ public class MovieSearch extends AppCompatActivity {
     }
 
     private void runHelp() {
-        AlertDialog alertDialog = new AlertDialog.Builder(MovieSearch.this).create();
-        alertDialog.setTitle("Help Menu");
-        alertDialog.setMessage("App Instruction to be shown below");
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
+        AlertDialog dialog = new AlertDialog.Builder(MovieSearch.this)
+                .setTitle(R.string.help_title_movie)
+                .setMessage(R.string.help_message_movie)
+                .setPositiveButton("OK", (click, arg) ->{
+                })
+                .show();
     }
 
     private void runSearchMovie(String movieName) {
