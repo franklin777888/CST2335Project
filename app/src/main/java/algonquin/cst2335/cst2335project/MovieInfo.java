@@ -67,9 +67,9 @@ public class MovieInfo
         this.imageURL = imageURL;
     }
 
-    public MovieInfo(String imageURL,String title, String year) {
+    public MovieInfo(String imageURL,String title, String rating) {
         this.title = title;
-        this.year = year;
+        this.rating = rating;
         this.imageURL = imageURL;
     }
 }
