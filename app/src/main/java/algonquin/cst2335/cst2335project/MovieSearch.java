@@ -1,8 +1,12 @@
 package algonquin.cst2335.cst2335project;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,16 +25,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class MovieSearch extends AppCompatActivity {
 
@@ -43,6 +64,8 @@ public class MovieSearch extends AppCompatActivity {
     EditText myEdit = null;
     Button myButton = null;
     TextView myText = null;
+    private String stringUrl;
+    MovieSearchResult detailFragment;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -96,24 +119,118 @@ public class MovieSearch extends AppCompatActivity {
         Toast.makeText(context, "To be added: this movie saved to my favourite", Toast.LENGTH_SHORT).show();
     }
 
-    private void runSearchMovie(String movieName) {
+    private void runSearchMovie(String movieTitle) {
 
-        myText = findViewById(R.id.textView);
-        myEdit = findViewById(R.id.movieTextField);
-        movieList = findViewById(R.id.movieRecycler);
-        Context context = getApplicationContext();
-        myEdit.setText(movieName);
+        AlertDialog dialog = new AlertDialog.Builder(MovieSearch.this)
+                .setTitle(R.string.searching_message)
+                .setMessage("We\'re working hard to search: " + movieTitle)
+                .setView(new ProgressBar(MovieSearch.this))
+                .show();
 
-        movieList.setAdapter(movieAdapter);
-        movieList.setLayoutManager(new LinearLayoutManager(this));
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("SearchTitle", movieTitle);
+        editor.apply();
 
-        String editString = myEdit.getText().toString();
-        myText.setText("Your Movie Search is: " + editString);
-            Toast.makeText(context, "Future use: search pass/fail", Toast.LENGTH_SHORT).show();
-        MovieInfor thisMessage = new MovieInfor( myEdit.getText().toString(),1, time);
-        movieInfors.add(thisMessage);
-        movieAdapter.notifyItemInserted(movieInfors.size() -1);
+        Executor newThread = Executors.newSingleThreadExecutor();
+        newThread.execute( () -> {
+            /* This runs in a separate thread */
+            try {
+                MovieInfo searchResult;
+                Bitmap image = null;
+                int detailType = 1;
+                stringUrl = "https://www.omdbapi.com/?apikey=6c9862c2&r=xml&t="
+                        + URLEncoder.encode(movieTitle, "UTF-8");
+
+                URL url = new URL(stringUrl);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+
+                XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+                factory.setNamespaceAware(false);
+                XmlPullParser xpp = factory.newPullParser();
+                xpp.setInput(in, "UTF-8");
+
+                String title = null;
+                String year = null;
+                String runtime = null;
+                String actors = null;
+                String plot = null;
+                String poster = null;
+                String rating_imd = null;
+                String rating_meta = null;
+
+                while (xpp.next() != XmlPullParser.END_DOCUMENT) {
+                    switch (xpp.getEventType()) {
+                        case XmlPullParser.START_TAG:
+                            if (xpp.getName().equals("movie")) {
+                                title = xpp.getAttributeValue(null, "title");
+                                year = xpp.getAttributeValue(null, "year");
+                                runtime = xpp.getAttributeValue(null, "runtime");
+                                actors = xpp.getAttributeValue(null, "actors");
+                                plot = xpp.getAttributeValue(null, "plot");
+                                poster = xpp.getAttributeValue(null, "poster");
+                                rating_meta = xpp.getAttributeValue(null, "metascore");
+                                rating_imd = xpp.getAttributeValue(null, "imdbRating");
+                                searchResult = new MovieInfo(title, year, rating_imd, runtime, actors, plot, poster);
+
+                                File file = new File(getFilesDir(), title + ".png");
+                                if (file.exists()) {
+                                    image = BitmapFactory.decodeFile(getFilesDir() + "/" + title + ".png");
+                                } else {
+                                    URL imgUrl = new URL(poster);
+                                    HttpURLConnection connection = (HttpURLConnection) imgUrl.openConnection();
+                                    connection.connect();
+                                    int responseCode = connection.getResponseCode();
+                                    if (responseCode == 200) {
+                                        image = BitmapFactory.decodeStream(connection.getInputStream());
+                                        image.compress(Bitmap.CompressFormat.PNG, 100, openFileOutput(title + ".png", Activity.MODE_PRIVATE));
+                                    }
+
+                                    FileOutputStream fOut = null;
+                                    try {
+                                        fOut = openFileOutput(title + ".png", Context.MODE_PRIVATE);
+                                        image.compress(Bitmap.CompressFormat.PNG, 100, fOut);
+                                        fOut.flush();
+                                        fOut.close();
+                                    } catch (FileNotFoundException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                                MovieInfo finalSearchResult = searchResult;
+                                Bitmap finalImage = image;
+                                runOnUiThread(() -> {
+                                    detailFragment = new MovieSearchResult(finalSearchResult, finalImage, detailType);
+                                    FragmentManager fMgr = getSupportFragmentManager();
+                                    FragmentTransaction tx = fMgr.beginTransaction();
+                                    tx.replace(R.id.searchResult, detailFragment);
+                                    tx.commit();
+
+                                    dialog.hide();
+                                });
+
+
+                            } else if (xpp.getName().equals("error")) {
+                                runOnUiThread(() -> {
+                                    Toast.makeText(getApplicationContext(), R.string.movie_not_found, Toast.LENGTH_LONG).show();
+                                    dialog.hide();
+                                });
+
+                            }
+                            break;
+                        case XmlPullParser.END_TAG:
+                            break;
+                        case XmlPullParser.TEXT:
+                            break;
+                    }
+                }
+            } catch (IOException | XmlPullParserException ioe) {
+                Log.e("Connection error: ", ioe.getMessage());
+            }
+        });
     }
+
+
 
 
     @Override
@@ -141,9 +258,9 @@ public class MovieSearch extends AppCompatActivity {
         });
 
         myButton.setOnClickListener(clk -> {
-            String movieName = myEdit.getText().toString();
-            myToolbar.getMenu().add( 1, 5, 10, movieName).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
-            runSearchMovie(movieName);
+            String movieTitle = myEdit.getText().toString();
+            myToolbar.getMenu().add( 1, 5, 10, movieTitle).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+            runSearchMovie(movieTitle);
         });
 
     }

@@ -6,4 +6,11 @@
     <string name="hint_message">在此输入电影英文名</string>
     <string name="help_message_movie">具体步骤如下</string>
     <string name="help_title_movie">软件使用指南</string>
+    <string name="searching_message">正在搜索</string>
+    <string name="movie_not_found">抱歉，这部电影没有搜索结果.</string>
+    <string name="movie_add_to_favorite">您确定在您的最爱电影列表中加入这部电影吗？</string>
+    <string name="cancel_add_to_favorite">取消</string>
+    <string name="add_to_favorite">添加</string>
+    <string name="movie_duplicated_add">这部影片已经在您的最爱电影列表中！</string>
+    <string name="undo_movie_add_to_favorite">撤销</string>
 </resources>

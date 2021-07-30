@@ -7,6 +7,13 @@
     <string name="hint_message">Type movie name here</string>
     <string name="help_message_movie">See Instruction here</string>
     <string name="help_title_movie">Help Menu</string>
+    <string name="searching_message">Getting result</string>
+    <string name="movie_not_found">Sorry, this movie is not found.</string>
+    <string name="movie_add_to_favorite">Do you want to add this movie to your favorite?</string>
+    <string name="cancel_add_to_favorite">Cancel</string>
+    <string name="add_to_favorite">Add</string>
+    <string name="movie_duplicated_add">The movie has already in your favorite movie list.</string>
+    <string name="undo_movie_add_to_favorite">Undo</string>
 
 
 </resources>

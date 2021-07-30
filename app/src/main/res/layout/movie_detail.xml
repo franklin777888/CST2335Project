@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentMovieDetail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp">
+
+    <ImageView
+        android:id="@+id/poster"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/favourite" />
+
+    <TextView
+        android:id="@+id/movieTitleView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="MovieTitleGoesHereMovieTitleGoesHereMovieTitleGoesHereMovieTitleGoesHereMovieTitleGoesHereMovieTitleGoesHereMovieTitleGoesHereMovieTitleGoesHere"
+        app:layout_constraintStart_toStartOf="@+id/poster"
+        app:layout_constraintTop_toBottomOf="@id/poster" />
+
+    <TextView
+        android:id="@+id/yearView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="YearGoesHereYearGoesHereYearGoesHereYearGoesHereYearGoesHereYearGoesHereYearGoesHereYearGoesHere"
+        app:layout_constraintStart_toStartOf="@+id/movieTitleView"
+        app:layout_constraintTop_toBottomOf="@+id/movieTitleView" />
+
+    <TextView
+        android:id="@+id/ratingView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="RatingGoesHere"
+        app:layout_constraintStart_toStartOf="@+id/yearView"
+        app:layout_constraintTop_toBottomOf="@+id/yearView" />
+
+    <TextView
+        android:id="@+id/runtimeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="RuntimeGoesHere"
+        app:layout_constraintStart_toStartOf="@+id/ratingView"
+        app:layout_constraintTop_toBottomOf="@+id/ratingView" />
+
+    <TextView
+        android:id="@+id/actorsView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="ActorsGoesHere"
+        app:layout_constraintStart_toStartOf="@+id/runtimeView"
+        app:layout_constraintTop_toBottomOf="@+id/runtimeView" />
+
+    <TextView
+        android:id="@+id/plotView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:text="PlotGoesHere"
+        app:layout_constraintBottom_toTopOf="@+id/favorite"
+        app:layout_constraintStart_toStartOf="@+id/actorsView"
+        app:layout_constraintTop_toBottomOf="@+id/actorsView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/favorite"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/add" />
+
+    <ImageView
+        android:id="@+id/goBack"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/delete" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
