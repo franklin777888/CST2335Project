@@ -76,14 +76,14 @@ public class MovieFavoriteFragment extends Fragment {
 
     private class MyRowViews extends RecyclerView.ViewHolder{
         TextView titleText;
-        TextView yearText;
+        TextView ratingText;
         ImageView imageURLText;
         int position = -1;
 
         public MyRowViews(View itemView) {
             super(itemView);
             titleText =  itemView.findViewById(R.id.movieName);
-            yearText = itemView.findViewById(R.id.time);
+            ratingText = itemView.findViewById(R.id.ratingView);
             imageURLText = itemView.findViewById(R.id.movieImage);
 
             itemView.setOnClickListener( click ->{
@@ -145,7 +145,7 @@ public class MovieFavoriteFragment extends Fragment {
         @Override //says ViewHolder, but it's actually MyRowViews object; position is the row we're building
         public void onBindViewHolder(MyRowViews holder, int position) {
             holder.titleText.setText(messages.get(position).getTitle());
-            holder.yearText.setText(messages.get(position).getYear());
+            holder.ratingText.setText(messages.get(position).getRating());
 
             image = BitmapFactory.decodeFile(getContext().getFilesDir() + "/" + messages.get(position).getTitle() + ".png");
             holder.imageURLText.setImageBitmap(image);
