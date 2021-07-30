@@ -55,12 +55,9 @@ import java.util.concurrent.Executors;
 public class MovieSearch extends AppCompatActivity {
 
     SharedPreferences prefs;
-    SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a", Locale.getDefault());
-    String time = sdf.format(new Date());
     Toolbar myToolbar = null;
     EditText myEdit = null;
     Button myButton = null;
-    //TextView myText = null;
     private String stringUrl;
     MovieDetailFragment detailFragment;
 
@@ -112,14 +109,11 @@ public class MovieSearch extends AppCompatActivity {
     }
 
     private void runFavouriteSave() {
-        Context context = getApplicationContext();
-
         MovieFavoriteFragment favoriteFragment = new MovieFavoriteFragment();
         FragmentManager fMgr = getSupportFragmentManager();
         FragmentTransaction tx = fMgr.beginTransaction();
         tx.replace(R.id.searchResult, favoriteFragment);
         tx.commit();
-        Toast.makeText(context, "To be added: this movie saved to my favourite", Toast.LENGTH_SHORT).show();
     }
 
     private void runSearchMovie(String movieName) {
@@ -159,7 +153,6 @@ public class MovieSearch extends AppCompatActivity {
                 String plot = null;
                 String poster = null;
                 String rating_imd = null;
-                String imdbID = null;
 
                 while (xpp.next() != XmlPullParser.END_DOCUMENT) {
                     switch (xpp.getEventType()) {

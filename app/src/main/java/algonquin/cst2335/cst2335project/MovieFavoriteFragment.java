@@ -69,7 +69,7 @@ public class MovieFavoriteFragment extends Fragment {
             String imageURL = results.getString(imageCol);
             messages.add(new MovieInfo(title, year, rating, runtime, actors, plot, imageURL, id));
         }
-        Collections.sort(messages,(MovieInfo m1, MovieInfo m2)->{return m1.getTitle().compareTo(m2.getTitle());});
+        Collections.sort(messages,(MovieInfo m1, MovieInfo m2)->{return m2.getRating().compareTo(m1.getRating());});
 
         return movieLayout;
     }
@@ -82,9 +82,9 @@ public class MovieFavoriteFragment extends Fragment {
 
         public MyRowViews(View itemView) {
             super(itemView);
-            titleText =  itemView.findViewById(R.id.movieName);
-            ratingText = itemView.findViewById(R.id.ratingView);
-            imageURLText = itemView.findViewById(R.id.movieImage);
+            titleText =  itemView.findViewById(R.id.movie_title_text);
+            ratingText = itemView.findViewById(R.id.movie_rating_text);
+            imageURLText = itemView.findViewById(R.id.movieimage_text);
 
             itemView.setOnClickListener( click ->{
                 int chosenPosition = getAbsoluteAdapterPosition();

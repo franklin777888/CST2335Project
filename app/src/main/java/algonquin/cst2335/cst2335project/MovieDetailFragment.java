@@ -41,7 +41,7 @@ public class MovieDetailFragment extends Fragment {
         ImageView posterView = detailsView.findViewById(R.id.poster);
         TextView titleView = detailsView.findViewById(R.id.titleView);
         TextView yearView = detailsView.findViewById(R.id.yearView);
-        TextView ratingView = detailsView.findViewById(R.id.ratingView);
+        TextView ratingView = detailsView.findViewById(R.id.movie_rating_text);
         TextView runtimeView = detailsView.findViewById(R.id.runtimeView);
         TextView actorsView = detailsView.findViewById(R.id.actorsView);
         TextView plotView = detailsView.findViewById(R.id.plotView);
@@ -60,13 +60,6 @@ public class MovieDetailFragment extends Fragment {
             closeButton.setOnClickListener(goBackClicked -> {
                 getParentFragmentManager().beginTransaction().remove(this).commit();
                 MovieSearch parentActivity = (MovieSearch) getContext();
-                /*MovieFavoriteFragment favoriteFragment = new MovieFavoriteFragment();
-                FragmentManager fMgr = parentActivity.getSupportFragmentManager();
-                FragmentTransaction tx = fMgr.beginTransaction();
-                tx.replace(R.id.searchResult, favoriteFragment);
-                tx.commit();
-
-                 */
 
             });
         }
