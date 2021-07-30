@@ -13,4 +13,8 @@
     <string name="add_to_favorite">添加</string>
     <string name="movie_duplicated_add">这部影片已被添加至收藏！</string>
     <string name="undo_movie_add_to_favorite">撤销</string>
+    <string name="delete_movie_from_favorite">删除</string>
+    <string name="view_or_delete">请问您需要查看影片详情还是从收藏列表中删除影片?</string>
+    <string name="view_detail_movie">查看详情</string>
+
 </resources>

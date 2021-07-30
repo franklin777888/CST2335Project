@@ -1,6 +1,7 @@
 package algonquin.cst2335.cst2335project;
 
-public class MovieInfo {
+public class MovieInfo
+{
     String title;
     String year;
     String rating;
@@ -10,6 +11,17 @@ public class MovieInfo {
     String imageURL;
     long id;
 
+
+    public MovieInfo(String title, String year, String rating, String runtime, String actors, String plot, String imageURL, long id){
+        this.title = title;
+        this.year = year;
+        this.rating = rating;
+        this.runtime = runtime;
+        this.actor = actors;
+        this.plot = plot;
+        this.imageURL = imageURL;
+        setId(id);
+    }
 
     public void setId(long l){
         id = l;
@@ -55,4 +67,11 @@ public class MovieInfo {
         this.imageURL = imageURL;
     }
 
+    public MovieInfo(String imageURL,String title, String year) {
+        this.title = title;
+        this.year = year;
+        this.imageURL = imageURL;
+    }
 }
+
+

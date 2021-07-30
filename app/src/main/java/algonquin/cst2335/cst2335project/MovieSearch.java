@@ -54,12 +54,9 @@ import java.util.concurrent.Executors;
 
 public class MovieSearch extends AppCompatActivity {
 
-    //RecyclerView movieList;
-    ArrayList<MovieInfor> movieInfors = new ArrayList<>();    // hold our typed messages
     SharedPreferences prefs;
     SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a", Locale.getDefault());
     String time = sdf.format(new Date());
-    MovieAdapter movieAdapter = new MovieAdapter();
     Toolbar myToolbar = null;
     EditText myEdit = null;
     Button myButton = null;
@@ -116,6 +113,12 @@ public class MovieSearch extends AppCompatActivity {
 
     private void runFavouriteSave() {
         Context context = getApplicationContext();
+
+        MovieFavoriteFragment favoriteFragment = new MovieFavoriteFragment();
+        FragmentManager fMgr = getSupportFragmentManager();
+        FragmentTransaction tx = fMgr.beginTransaction();
+        tx.replace(R.id.searchResult, favoriteFragment);
+        tx.commit();
         Toast.makeText(context, "To be added: this movie saved to my favourite", Toast.LENGTH_SHORT).show();
     }
 
@@ -156,6 +159,7 @@ public class MovieSearch extends AppCompatActivity {
                 String plot = null;
                 String poster = null;
                 String rating_imd = null;
+                String imdbID = null;
 
                 while (xpp.next() != XmlPullParser.END_DOCUMENT) {
                     switch (xpp.getEventType()) {
@@ -273,104 +277,12 @@ public class MovieSearch extends AppCompatActivity {
         editor.apply();
     }
 
-    private class MyRowViews extends RecyclerView.ViewHolder{
-
-        TextView messageText;
-        TextView timeText;
-        int position = -1;
-
-        public MyRowViews(View itemView) {  // itemView is a ConstraintLayout, that has <TextView> as sub-item
-            super(itemView);
-
-            messageText = itemView.findViewById(R.id.message);
-            timeText = itemView.findViewById(R.id.time);
-
-            itemView.setOnClickListener( click -> {
-
-                AlertDialog.Builder builder = new AlertDialog.Builder( MovieSearch.this );
-                builder.setMessage("Do you want to delete the movie: " + messageText.getText())
-                        .setTitle("Question:")
-                        .setNegativeButton("No", (dialog, cl) -> {})
-                        .setPositiveButton("Yes", (dialog, cl) -> {
-
-                            position = getAbsoluteAdapterPosition();
-
-                            MovieInfor removedMessage = movieInfors.get(position);
-                            movieInfors.remove(position);
-                            movieAdapter.notifyItemRemoved(position);
-
-                            Snackbar.make(messageText, "You deleted message #" + position, Snackbar.LENGTH_LONG)
-                                    .setAction("Undo", clk -> {
-                                        movieInfors.add(position, removedMessage);
-                                        movieAdapter.notifyItemInserted(position);
-                                    })
-                                    .show();
-                        })
-                        .create().show();
-            });
-        }
-
-        public void setPosition(int p) {
-            position = p;
-        }
-    }
-
-    private class MovieAdapter extends RecyclerView.Adapter{
-
-        public int getItemViewType(int position) {
-            MovieInfor thisRow = movieInfors.get(position);
-            return thisRow.getSend();
-        }
-
-        @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-            LayoutInflater layoutInflater = getLayoutInflater();
-
-            int layoutID = R.layout.sent_message;
-
-            View loadedRow = layoutInflater.inflate(layoutID, parent, false);
-            MyRowViews initRow = new MyRowViews((loadedRow));
-            return initRow;
-        }
-
-        @Override
-        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            MyRowViews thisRowLayout = (MyRowViews) holder;
-            thisRowLayout.messageText.setText(movieInfors.get(position).getMessage());
-            thisRowLayout.timeText.setText(movieInfors.get(position).getSearchTime());
-            thisRowLayout.setPosition(position);
-        }
-
-        @Override
-        public int getItemCount() {
-
-            return movieInfors.size();
-        }
-    }
-
-    private class MovieInfor {
-        public String message;
-        public int send;
-        public String searchTime;
-
-        public MovieInfor(String message, int send, String searchTime) {
-            this.message = message;
-            this.send = send;
-            this.searchTime = searchTime;
-        }
-
-        public String getMessage() {
-            return message;
-        }
-
-        public int getSend() {
-            return send;
-        }
-
-        public String getSearchTime() {
-            return searchTime;
-        }
+    public void userClickedMessage(MovieInfo searchResult, Bitmap image, int detailType) {
+        MovieDetailFragment detailFragment = new MovieDetailFragment(searchResult,image,detailType);
+        FragmentManager fMgr = getSupportFragmentManager();
+        FragmentTransaction tx = fMgr.beginTransaction();
+        tx.replace(R.id.searchResult, detailFragment);
+        tx.commit();
     }
 
 

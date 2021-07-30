@@ -100,7 +100,6 @@ public class MovieDetailFragment extends Fragment {
                         Toast.makeText(getContext(), R.string.movie_duplicated_add, Toast.LENGTH_LONG).show();
                 }else {
                         ContentValues newRow = new ContentValues();
-                        newRow.put(MovieMyOpenHelper.col_id, searchResult.getId());
                         newRow.put(MovieMyOpenHelper.col_title, searchResult.getTitle());
                         newRow.put(MovieMyOpenHelper.col_year, searchResult.getYear());
                         newRow.put(MovieMyOpenHelper.col_rating, searchResult.getRating());
@@ -108,14 +107,13 @@ public class MovieDetailFragment extends Fragment {
                         newRow.put(MovieMyOpenHelper.col_actors, searchResult.getActor());
                         newRow.put(MovieMyOpenHelper.col_plot, searchResult.getPlot());
                         newRow.put(MovieMyOpenHelper.col_image, searchResult.getImageURL());
+                        newRow.put(MovieMyOpenHelper.col_image, searchResult.getImageURL());
 
                         long newId = db.insert(MovieMyOpenHelper.TABLE_NAME, MovieMyOpenHelper.col_title, newRow);
 
-                        searchResult.setId(newId);
-
                         Snackbar.make(addButton, "You save movie " + searchResult.getTitle(), Snackbar.LENGTH_LONG)
                                 .setAction(R.string.undo_movie_add_to_favorite, clk -> {
-                                    db.delete(MovieMyOpenHelper.TABLE_NAME, "_id=?", new String[]{Long.toString(searchResult.getId())});
+                                    db.delete(MovieMyOpenHelper.TABLE_NAME, "_id=?",new String[]{Long.toString(searchResult.getId())});
                                 })
                                 .show();
                 }})
