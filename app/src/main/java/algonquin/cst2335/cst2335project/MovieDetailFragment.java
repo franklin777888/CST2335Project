@@ -14,12 +14,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.snackbar.Snackbar;
 
-public class MovieSearchResult extends Fragment {
+public class MovieDetailFragment extends Fragment {
 
     MovieInfo searchResult;
     Bitmap image;
@@ -30,7 +28,7 @@ public class MovieSearchResult extends Fragment {
 
     ImageView addButton;
 
-    public MovieSearchResult(MovieInfo searchResult, Bitmap image, int detailType){
+    public MovieDetailFragment(MovieInfo searchResult, Bitmap image, int detailType){
         this.searchResult = searchResult;
         this.image = image;
         this.detailType = detailType;
@@ -41,7 +39,7 @@ public class MovieSearchResult extends Fragment {
         View detailsView = inflater.inflate(R.layout.movie_detail, container, false);
 
         ImageView posterView = detailsView.findViewById(R.id.poster);
-        TextView titleView = detailsView.findViewById(R.id.movieTitleView);
+        TextView titleView = detailsView.findViewById(R.id.movieNameView);
         TextView yearView = detailsView.findViewById(R.id.yearView);
         TextView ratingView = detailsView.findViewById(R.id.ratingView);
         TextView runtimeView = detailsView.findViewById(R.id.runtimeView);
@@ -90,7 +88,7 @@ public class MovieSearchResult extends Fragment {
     public void notifyMessageAdded(MovieInfo searchResult) {
         AlertDialog.Builder builder = new AlertDialog.Builder( getContext() );
 
-        builder.setMessage("Do you want to add it to your favorite: "+ searchResult.getTitle())
+        builder.setMessage("Add it to your favourite: "+ searchResult.getTitle())
                 .setTitle(R.string.movie_add_to_favorite)
                 .setNegativeButton(R.string.cancel_add_to_favorite, (dialog, cl) ->{ })
                 .setPositiveButton(R.string.add_to_favorite, (dialog, cl) ->{

@@ -54,7 +54,7 @@ import java.util.concurrent.Executors;
 
 public class MovieSearch extends AppCompatActivity {
 
-    RecyclerView movieList;
+    //RecyclerView movieList;
     ArrayList<MovieInfor> movieInfors = new ArrayList<>();    // hold our typed messages
     SharedPreferences prefs;
     SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a", Locale.getDefault());
@@ -63,9 +63,9 @@ public class MovieSearch extends AppCompatActivity {
     Toolbar myToolbar = null;
     EditText myEdit = null;
     Button myButton = null;
-    TextView myText = null;
+    //TextView myText = null;
     private String stringUrl;
-    MovieSearchResult detailFragment;
+    MovieDetailFragment detailFragment;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -119,16 +119,16 @@ public class MovieSearch extends AppCompatActivity {
         Toast.makeText(context, "To be added: this movie saved to my favourite", Toast.LENGTH_SHORT).show();
     }
 
-    private void runSearchMovie(String movieTitle) {
+    private void runSearchMovie(String movieName) {
 
         AlertDialog dialog = new AlertDialog.Builder(MovieSearch.this)
                 .setTitle(R.string.searching_message)
-                .setMessage("We\'re working hard to search: " + movieTitle)
+                .setMessage("We\'re working hard to search: " + movieName)
                 .setView(new ProgressBar(MovieSearch.this))
                 .show();
 
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("SearchTitle", movieTitle);
+        editor.putString("SearchTitle", movieName);
         editor.apply();
 
         Executor newThread = Executors.newSingleThreadExecutor();
@@ -139,7 +139,7 @@ public class MovieSearch extends AppCompatActivity {
                 Bitmap image = null;
                 int detailType = 1;
                 stringUrl = "https://www.omdbapi.com/?apikey=6c9862c2&r=xml&t="
-                        + URLEncoder.encode(movieTitle, "UTF-8");
+                        + URLEncoder.encode(movieName, "UTF-8");
 
                 URL url = new URL(stringUrl);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -157,19 +157,17 @@ public class MovieSearch extends AppCompatActivity {
                 String plot = null;
                 String poster = null;
                 String rating_imd = null;
-                String rating_meta = null;
 
                 while (xpp.next() != XmlPullParser.END_DOCUMENT) {
                     switch (xpp.getEventType()) {
                         case XmlPullParser.START_TAG:
                             if (xpp.getName().equals("movie")) {
-                                title = xpp.getAttributeValue(null, "title");
+                                title = xpp.getAttributeValue(null, "name");
                                 year = xpp.getAttributeValue(null, "year");
                                 runtime = xpp.getAttributeValue(null, "runtime");
                                 actors = xpp.getAttributeValue(null, "actors");
                                 plot = xpp.getAttributeValue(null, "plot");
                                 poster = xpp.getAttributeValue(null, "poster");
-                                rating_meta = xpp.getAttributeValue(null, "metascore");
                                 rating_imd = xpp.getAttributeValue(null, "imdbRating");
                                 searchResult = new MovieInfo(title, year, rating_imd, runtime, actors, plot, poster);
 
@@ -200,7 +198,7 @@ public class MovieSearch extends AppCompatActivity {
                                 MovieInfo finalSearchResult = searchResult;
                                 Bitmap finalImage = image;
                                 runOnUiThread(() -> {
-                                    detailFragment = new MovieSearchResult(finalSearchResult, finalImage, detailType);
+                                    detailFragment = new MovieDetailFragment(finalSearchResult, finalImage, detailType);
                                     FragmentManager fMgr = getSupportFragmentManager();
                                     FragmentTransaction tx = fMgr.beginTransaction();
                                     tx.replace(R.id.searchResult, detailFragment);

@@ -11,17 +11,6 @@ public class MovieInfo {
     long id;
 
 
-    public MovieInfo(String title, String year, String rating, String runtime, String actors, String plot, String imageURL, long id){
-        this.title = title;
-        this.year = year;
-        this.rating = rating;
-        this.runtime = runtime;
-        this.actor = actors;
-        this.plot = plot;
-        this.imageURL = imageURL;
-        setId(id);
-    }
-
     public void setId(long l){
         id = l;
     }
@@ -66,9 +55,4 @@ public class MovieInfo {
         this.imageURL = imageURL;
     }
 
-    public MovieInfo(String imageURL, String title, String year) {
-        this.title = title;
-        this.year = year;
-        this.imageURL = imageURL;
-    }
 }
