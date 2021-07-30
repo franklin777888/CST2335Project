@@ -21,11 +21,11 @@
         app:srcCompat="@drawable/picture" />
 
     <TextView
-        android:id="@+id/movieNameView"
+        android:id="@+id/titleView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="MovieNameGoesHere"
+        android:text="TitleGoesHere"
         app:layout_constraintStart_toStartOf="@+id/poster"
         app:layout_constraintTop_toBottomOf="@id/poster" />
 
@@ -35,8 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="YearGoesHere"
-        app:layout_constraintStart_toStartOf="@+id/movieNameView"
-        app:layout_constraintTop_toBottomOf="@+id/movieNameView" />
+        app:layout_constraintStart_toStartOf="@+id/titleView"
+        app:layout_constraintTop_toBottomOf="@+id/titleView" />
 
     <TextView
         android:id="@+id/ratingView"

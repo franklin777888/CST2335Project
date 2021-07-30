@@ -39,7 +39,7 @@ public class MovieDetailFragment extends Fragment {
         View detailsView = inflater.inflate(R.layout.movie_detail, container, false);
 
         ImageView posterView = detailsView.findViewById(R.id.poster);
-        TextView titleView = detailsView.findViewById(R.id.movieNameView);
+        TextView titleView = detailsView.findViewById(R.id.titleView);
         TextView yearView = detailsView.findViewById(R.id.yearView);
         TextView ratingView = detailsView.findViewById(R.id.ratingView);
         TextView runtimeView = detailsView.findViewById(R.id.runtimeView);

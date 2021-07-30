@@ -7,7 +7,7 @@
     <string name="hint_message">Type movie name here</string>
     <string name="help_message_movie">See Instruction here</string>
     <string name="help_title_movie">Help Menu</string>
-    <string name="searching_message">Getting result</string>
+    <string name="searching_message">Searching... Please wait: </string>
     <string name="movie_not_found">Sorry, cannot find this movie.</string>
     <string name="movie_add_to_favorite">Do you want to add this movie to your favourite?</string>
     <string name="cancel_add_to_favorite">Cancel</string>

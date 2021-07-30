@@ -122,8 +122,7 @@ public class MovieSearch extends AppCompatActivity {
     private void runSearchMovie(String movieName) {
 
         AlertDialog dialog = new AlertDialog.Builder(MovieSearch.this)
-                .setTitle(R.string.searching_message)
-                .setMessage("We\'re working hard to search: " + movieName)
+                .setMessage(R.string.searching_message)
                 .setView(new ProgressBar(MovieSearch.this))
                 .show();
 
@@ -162,7 +161,7 @@ public class MovieSearch extends AppCompatActivity {
                     switch (xpp.getEventType()) {
                         case XmlPullParser.START_TAG:
                             if (xpp.getName().equals("movie")) {
-                                title = xpp.getAttributeValue(null, "name");
+                                title = xpp.getAttributeValue(null, "title");
                                 year = xpp.getAttributeValue(null, "year");
                                 runtime = xpp.getAttributeValue(null, "runtime");
                                 actors = xpp.getAttributeValue(null, "actors");
