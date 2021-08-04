@@ -1,5 +1,8 @@
 package algonquin.cst2335.cst2335project;
 
+/**
+ * This class is to set up the items for Recyclerview
+ */
 public class SoccerNews {
     private String soccerTitle;
     private String soccerDate;

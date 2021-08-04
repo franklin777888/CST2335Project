@@ -16,7 +16,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+/**
+ * This class is to set up the soccer favorite news functions
+ */
 public class SoccerFavNews extends AppCompatActivity {
+    /**
+     * initialize variables. Use array to store the soccer news elements.
+     */
     SQLiteDatabase socDb;
     ArrayList<SoccerNews> elements=new ArrayList<>();
     MyAdapter adt=new MyAdapter();
@@ -52,26 +58,30 @@ public class SoccerFavNews extends AppCompatActivity {
     }
 
     /**
-     * set up database laoding
+     * set up database loading
      */
     private void loadDataFromDatabase() {
-        //get a database connection:
+        /**
+         * get database connection:
+         */
         SoccerOpenHelper dbOpener = new SoccerOpenHelper(this);
-        socDb = dbOpener.getWritableDatabase(); //This calls onCreate() if you've never built the table before, or onUpgrade if the version here is newer
+        socDb = dbOpener.getWritableDatabase();
 
-        // We want to get all of the columns. Look at MyOpener.java for the definitions:
+        /**
+         * query all the results from the database, then find the column index
+         */
         String [] columns = {SoccerOpenHelper.COL_ID, SoccerOpenHelper.COL_SOCCERIMG, SoccerOpenHelper.COL_SOCCERTITLE, SoccerOpenHelper.COL_SOCCERDATE, SoccerOpenHelper.COL_SOCCERDESC, SoccerOpenHelper.COL_SOCCERLINK};
-        //query all the results from the database:
         Cursor results = socDb.query(false, SoccerOpenHelper.TABLE_NAME, columns, null, null, null, null, null, null);
-        //Now the results object has rows of results that match the query.
-        //find the column index
+
         int soccerImgColumnIndex = results.getColumnIndex(SoccerOpenHelper.COL_SOCCERIMG);
         int soccerTitleColumnIndex = results.getColumnIndex(SoccerOpenHelper.COL_SOCCERTITLE);
         int soccerDateColumnIndex = results.getColumnIndex(SoccerOpenHelper.COL_SOCCERDATE);
         int soccerDescColumnIndex = results.getColumnIndex(SoccerOpenHelper.COL_SOCCERDESC);
         int soccerLinkColumnIndex = results.getColumnIndex(SoccerOpenHelper.COL_SOCCERLINK);
 
-        //iterate over the results, return true if there is a next item:
+        /**
+         * iterate over the results, return true if there is a next item:
+         */
         while(results.moveToNext())
         {
             String img = results.getString(soccerImgColumnIndex);
@@ -92,6 +102,9 @@ public class SoccerFavNews extends AppCompatActivity {
 
     }
 
+    /**
+     * Use RecyclerView to hold the soccer news elements
+     */
     private class MyRowViews extends RecyclerView.ViewHolder{
         TextView titleText;
         public MyRowViews(View itemView) {
@@ -125,7 +138,18 @@ public class SoccerFavNews extends AppCompatActivity {
         }
 
     }
+
+    /**
+     * This is the class to set up adapter
+     */
     private class MyAdapter extends RecyclerView.Adapter<MyRowViews>{
+
+        /**
+         * This method is to get the view
+         * @param parent viewGroup
+         * @param viewType int
+         * @return View newView
+         */
         @Override
         public MyRowViews onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater inflater=getLayoutInflater();
@@ -134,11 +158,20 @@ public class SoccerFavNews extends AppCompatActivity {
             return row;
         }
 
+        /**
+         * This method is to show the view
+         * @param holder show the elements view
+         * @param position int
+         */
         @Override
         public void onBindViewHolder(MyRowViews holder, int position) {
             holder.titleText.setText(elements.get(position).getSoccerTitle());
         }
 
+        /**
+         * This method is to count the size of the elements
+         * @return int elements.size()
+         */
         @Override
         public int getItemCount() {
             return elements.size();

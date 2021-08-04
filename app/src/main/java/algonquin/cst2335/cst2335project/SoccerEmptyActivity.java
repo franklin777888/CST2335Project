@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
- *This class is to set up the empty activity for mobile
+ *This class is to set up the empty activity for mobile version
  */
 public class SoccerEmptyActivity extends AppCompatActivity {
     /**

@@ -30,7 +30,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 /**
- * this class is to set up the details fragment for tablet, extends the fragment
+ * this class is to set up the details fragment for tablet, extends Fragment
  */
 public class SoccerFragment extends Fragment {
 
@@ -49,6 +49,7 @@ public class SoccerFragment extends Fragment {
     String dataDesc;
     String dataLink;
     long newId;
+
     /**
      * this method is to creat the view
      * @param inflater layoutInflater
@@ -153,7 +154,6 @@ public class SoccerFragment extends Fragment {
      * create method to query and match the result wih the database,and change button text
      */
     private void changeBtnText(){
-        //query the results from the database:
         Cursor results = socDb.query(false, SoccerOpenHelper.TABLE_NAME, new String[]{SoccerOpenHelper.COL_SOCCERTITLE, SoccerOpenHelper.COL_SOCCERDATE},
                 SoccerOpenHelper.COL_SOCCERTITLE +" = ? and " + SoccerOpenHelper.COL_SOCCERDATE+"= ?" ,
                 new String[]{String.valueOf(dataTitle),String.valueOf(dataDate)}, null, null, null, null);
@@ -184,7 +184,9 @@ public class SoccerFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        //context will either be FragmentExample for a tablet, or EmptyActivity for phone
+        /**
+         * context will either be FragmentExample for a tablet, or EmptyActivity for phone
+         */
         parentActivity = (AppCompatActivity)context;
     }
 

@@ -7,37 +7,39 @@
     android:orientation="horizontal"
     tools:context=".SoccerFavNews">
 
-
     <LinearLayout
         android:id="@+id/leftList"
-        android:orientation="vertical"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="300dp"
-        android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/soccerFavTitles"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/soccerFavTitles"
-        android:textFontWeight="10"
-        android:textSize="25dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent">
 
-    <ImageView
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:id="@+id/backHome"
-        app:layout_constraintLeft_toRightOf="@+id/soccerFavTitles"
-        app:layout_constraintBottom_toBottomOf="@+id/soccerFavTitles"
-        android:src="@drawable/soccernews"/>
+        <TextView
+            android:id="@+id/soccerFavTitles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/soccerFavTitles"
+            android:textFontWeight="10"
+            android:textSize="25dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/soccerFavNewsList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/soccerFavTitles"
-        />
+        <ImageView
+            android:id="@+id/backHome"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="32dp"
+            android:foreground="@drawable/backhome"
+            android:src="@drawable/soccernews"
+            app:layout_constraintBottom_toBottomOf="@+id/soccerFavTitles"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/soccerFavTitles"  />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/soccerFavNewsList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/soccerFavTitles" />
     </LinearLayout>
     <FrameLayout
         android:id="@+id/soccerFragmentLocation"

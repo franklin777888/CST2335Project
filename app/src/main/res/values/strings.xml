@@ -17,7 +17,7 @@
     <string name="carPage">You clicked car charging station finder page</string>
     <string name="busPage">You clicked OCTranspo bus route page</string>
     <string name="moviePage">You clicked movie search page</string>
-    <string name="soccerPage">You clicked soccer search page</string>
+    <string name="soccerPage">You clicked soccer news page</string>
     <string name="NavigationDrawer">NavigationDrawer</string>
     <string name="helpPage">Click icons you will be redirect to related page</string>
 
@@ -46,6 +46,6 @@
     <string name="soccerInstr">Instructions</string>
     <string name="soccerQuestion">Do you like this app?</string>
     <string name="soccerHelpMsg">You clicked help button</string>
-    <string name="helpSoccer">In this app, you can check up to date soccer news and click the news you are interested in then save to the favourite. Click the favourite news button to check the saved list.</string>
+    <string name="helpSoccer">In this app, you can check up to date soccer news. Click the news you are interested in can save to the favourite. Click the favourite news button to check the saved list.</string>
 
 </resources>

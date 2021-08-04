@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- main -->
     <string name="app_name" translatable="false">第六组</string>
     <string name="version">版本1.0</string>
     <string name="author1">电影搜索 作者：余文亮</string>
     <string name="author2">公交查询 作者：刘宏扬</string>
     <string name="author3">足球新闻 作者：高立荣</string>
-    <string name="author4">汽车充电桩查询 作者：李梦颖</string>
+    <string name="author4">汽车充电桩查询 作者：李梦莹</string>
     <string name="welcomeMain">欢迎使用我们的程序！</string>
     <string name="movie">电影搜索</string>
     <string name="bus">公交查询</string>
@@ -20,6 +21,8 @@
     <string name="soccerPage">您已进入足球新闻页面</string>
     <string name="NavigationDrawer">导航菜单</string>
     <string name="helpPage">点击进入相关页面</string>
+
+    <!--    Soccer-->
     <string name="soccerRatingCmt">您的评价：</string>
     <string name="soccerComment">您的评价对我们很重要！</string>
     <string name="soccerBoxRate">评分</string>
@@ -35,12 +38,12 @@
     <string name="soccerLink">网络链接</string>
     <string name="soccerDescription">新闻简介</string>
     <string name="soccerLinkBrsBtn">在浏览器中打开</string>
-    <string name="soccerSaveBtn">保存到收藏夹</string>
-    <string name="soccerSaveFavBtn">保存到收藏夹</string>
-    <string name="soccerRemoveFavBtn">从收藏夹中移除</string>
-    <string name="goToSoccerFavBtn">查看我最喜欢的新闻</string>
-    <string name="soccerFavNewsBtn">我最喜欢的新闻</string>
-    <string name="soccerFavTitles">我最喜欢的新闻标题</string>
+    <string name="soccerSaveBtn">保存到我的足球新闻收藏夹</string>
+    <string name="soccerSaveFavBtn">保存到我的足球新闻收藏夹</string>
+    <string name="soccerRemoveFavBtn">从我的足球新闻收藏夹中移除</string>
+    <string name="goToSoccerFavBtn">查看我的足球新闻收藏夹</string>
+    <string name="soccerFavNewsBtn">查看我的足球新闻收藏夹</string>
+    <string name="soccerFavTitles">我最喜欢的足球新闻</string>
     <string name="soccerInstr">使用指南</string>
     <string name="soccerQuestion">你喜欢这个应用吗？</string>
     <string name="soccerHelpMsg">你点击了帮助按钮</string>

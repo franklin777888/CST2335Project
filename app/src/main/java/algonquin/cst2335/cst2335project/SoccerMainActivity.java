@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,12 +21,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.Switch;
@@ -52,10 +49,12 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 /**
- *This is the class to set up the main functions
+ *This is the main class of soccer news to set up main functions
  */
 public class SoccerMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
+    /**
+     * initialize variables. Use array to store the soccer news elements.
+     */
     ArrayList<SoccerNews> elements = new ArrayList<>();
     MyAdapter adt=new MyAdapter();
     public static final String SOCCER_TITLE = "TITLE";
@@ -74,7 +73,7 @@ public class SoccerMainActivity extends AppCompatActivity implements NavigationV
     ProgressBar progressBar;
 
     /**
-     *this is the method to set up the onCreate functions
+     * This is the method to set up the onCreate functions.
      * @param savedInstanceState
      */
     @Override
@@ -89,7 +88,6 @@ public class SoccerMainActivity extends AppCompatActivity implements NavigationV
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         NavigationView navigationView = findViewById(R.id.nav_view);
-        //navigationView.setNavigationItemSelectedListener( this);
         navigationView.setNavigationItemSelectedListener((item)-> {
             onOptionsItemSelected(item);
             drawer.closeDrawer(GravityCompat.START);
@@ -136,18 +134,19 @@ public class SoccerMainActivity extends AppCompatActivity implements NavigationV
     }
 
     /**
-     * This method is used to load menu on toorbar layout.
-     * @param menu is stock  contents which will display on toolbar
+     * This method is used to load menu on toorlbar layout.
+     * @param menu contents icons that will display on toolbar
      * @return true or false
      */
+    @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.soccer_menu, menu);
-        return  true;
+        return true;
     }
 
     /**
-     * This method is used to allow user to clicked icons in toolbar
+     * This method is used to allow user to click icons on toolbar, than do the related actions.
      * @param item is icon on toolbar
      * @return boolean
      */
@@ -188,7 +187,7 @@ public class SoccerMainActivity extends AppCompatActivity implements NavigationV
      * @return boolean
      */
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem item) {
         String message = null;
         switch (item.getItemId()) {
             case R.id.goMovie:
@@ -215,18 +214,19 @@ public class SoccerMainActivity extends AppCompatActivity implements NavigationV
     }
 
     /**
-     * set up the sharedPreferences for star rating and comment
+     * This method is set up the sharedPreferences for star rating and comment
      */
     private void saveRanking() {
         SharedPreferences sp = getSharedPreferences("inputNum", Context.MODE_PRIVATE);
         SharedPreferences.Editor sharedPrefEditor=sp.edit();
-        sharedPrefEditor.putString("rankingScore", rateComment.getText().toString());
         sharedPrefEditor.putString("ranking", rateStar.getRating()+"");
+        sharedPrefEditor.putString("rankingScore", rateComment.getText().toString());
         sharedPrefEditor.commit();
     }
 
     /**
-     * this method is to create the dialog box
+     * This method is to create the alertDialog box and get the data using XmlPullParser.
+     * locate tags such as START_DOCUMENT, START_TAG, END_TAG, TEXT to dedicate data.
      */
     private void alertDialog(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -240,8 +240,7 @@ public class SoccerMainActivity extends AppCompatActivity implements NavigationV
         String savedR = sp.getString("ranking", "0");
         rateComment.setText(savedRanking);
         rateStar.setRating(Float.parseFloat(savedR));
-        alertDialogBuilder.setTitle(getResources().getString(R.string.soccerBoxRate))
-                .setMessage(getResources().getString(R.string.soccerBoxMsg))
+        alertDialogBuilder.setMessage(getResources().getString(R.string.soccerBoxMsg))
                 .setPositiveButton(getResources().getString(R.string.soccerYes), (click, arg) -> {
                     progressBar.setVisibility(View.VISIBLE);
                     Executor newThread = Executors.newSingleThreadExecutor();
@@ -318,6 +317,9 @@ public class SoccerMainActivity extends AppCompatActivity implements NavigationV
                 .create().show();
     }
 
+    /**
+     * Use RecyclerView to hold the soccer news elements
+     */
     private class MyRowViews extends RecyclerView.ViewHolder{
         TextView titleText;
         public MyRowViews(View itemView) {
@@ -351,7 +353,18 @@ public class SoccerMainActivity extends AppCompatActivity implements NavigationV
         }
 
     }
+
+    /**
+     * This is the class to set up adapter
+     */
     private class MyAdapter extends RecyclerView.Adapter<MyRowViews>{
+
+        /**
+         * This method is to get the view
+         * @param parent viewGroup
+         * @param viewType int
+         * @return View newView
+         */
         @Override
         public MyRowViews onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater inflater=getLayoutInflater();
@@ -360,11 +373,20 @@ public class SoccerMainActivity extends AppCompatActivity implements NavigationV
             return row;
         }
 
+        /**
+         * This method is to show the view
+         * @param holder show the elements view
+         * @param position int
+         */
         @Override
         public void onBindViewHolder(MyRowViews holder, int position) {
             holder.titleText.setText(elements.get(position).getSoccerTitle());
         }
 
+        /**
+         * This method is to count the size of the elements
+         * @return int elements.size()
+         */
         @Override
         public int getItemCount() {
             return elements.size();
