@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.soccer_menu, menu);
+        inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
 
@@ -92,10 +92,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(MainActivity.this, SoccerMainActivity.class));
                 break;
             case R.id.help:
-                message = getResources().getString(R.string.soccerHelpMsg);
+                message = getResources().getString(R.string.helpPage);
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
                 alertDialogBuilder.setTitle(getResources().getString(R.string.help))
-                        .setMessage(getResources().getString(R.string.helpSoccer))
+                        .setMessage(getResources().getString(R.string.helpPage))
                         .create().show();
                 break;
         }
