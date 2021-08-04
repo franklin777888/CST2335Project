@@ -17,6 +17,9 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
 
+/**
+ * This class to show details of searched movie information in fragment.
+ */
 public class MovieDetailFragment extends Fragment {
 
     MovieInfo searchResult;
@@ -28,6 +31,12 @@ public class MovieDetailFragment extends Fragment {
 
     ImageView addButton;
 
+    /**
+     * Constructor
+     * @param searchResult search result of the movie
+     * @param image image of the movie
+     * @param detailType a number to identify if this movie saved or not. equals 2 if already saved.
+     */
     public MovieDetailFragment(MovieInfo searchResult, Bitmap image, int detailType){
         this.searchResult = searchResult;
         this.image = image;

@@ -4,6 +4,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * This class to set up SQL queries to create the database table
+ */
 public class MovieMyOpenHelper extends SQLiteOpenHelper {
     public static final String name = "TheMovieDatabase";
     public static final int version = 1;
@@ -17,10 +20,18 @@ public class MovieMyOpenHelper extends SQLiteOpenHelper {
     public static final String col_plot = "Plot";
     public static final String col_image = "ImageURL";
 
+    /**
+     * Constructor
+     * @param context context of movie database
+     */
     public MovieMyOpenHelper(Context context) {
         super(context, name, null, version);
     }
 
+    /**
+     * This method to create the table.
+     * @param db database of movie
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME + " ("
@@ -34,6 +45,12 @@ public class MovieMyOpenHelper extends SQLiteOpenHelper {
                 + col_image + " TEXT);");
     }
 
+    /**
+     * This method to drop table if exits, and then create the table
+     * @param db database
+     * @param oldVersion old version
+     * @param newVersion new version
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists " + TABLE_NAME + ";") ;

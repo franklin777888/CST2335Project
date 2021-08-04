@@ -52,6 +52,9 @@ import java.util.Locale;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+/**
+ * This class to perform major functions for movie search app.
+ */
 public class MovieSearch extends AppCompatActivity {
 
     SharedPreferences prefs;
@@ -61,6 +64,11 @@ public class MovieSearch extends AppCompatActivity {
     private String stringUrl;
     MovieDetailFragment detailFragment;
 
+    /**
+     * This method to create the options menu when user opens the menu for the 1st time
+     * @param menu menu of movie app
+     * @return true if successful, false if fail.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -68,12 +76,16 @@ public class MovieSearch extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * This method allows user to identify an item, check help menu / favourites, and search new movies.
+     * @param item item of menu
+     * @return true if successfully handle a menu item, false if fail.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         TextView messageText = findViewById(R.id.message);
         TextView timeText = findViewById(R.id.time);
-
 
         switch(item.getItemId()) {
             case R.id.hide_views:
@@ -99,6 +111,9 @@ public class MovieSearch extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * This method to show help menu.
+     */
     private void runHelp() {
         AlertDialog dialog = new AlertDialog.Builder(MovieSearch.this)
                 .setTitle(R.string.help_title_movie)
@@ -108,6 +123,9 @@ public class MovieSearch extends AppCompatActivity {
                 .show();
     }
 
+    /**
+     * This method to save movies to favourites.
+     */
     private void runFavouriteSave() {
         MovieFavoriteFragment favoriteFragment = new MovieFavoriteFragment();
         FragmentManager fMgr = getSupportFragmentManager();
@@ -116,6 +134,10 @@ public class MovieSearch extends AppCompatActivity {
         tx.commit();
     }
 
+    /**
+     * This method to perform movie search.
+     * @param movieName title of movie
+     */
     private void runSearchMovie(String movieName) {
 
         AlertDialog dialog = new AlertDialog.Builder(MovieSearch.this)
@@ -224,9 +246,10 @@ public class MovieSearch extends AppCompatActivity {
         });
     }
 
-
-
-
+    /**
+     * This method to initialize all activities.
+     * @param savedInstanceState the saved instance in the bundle.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -260,6 +283,9 @@ public class MovieSearch extends AppCompatActivity {
     }
 
 
+    /**
+     * This function to keep a record of last entered movie title.
+     */
     @Override
     protected void onPause() {
         super.onPause();
@@ -270,6 +296,12 @@ public class MovieSearch extends AppCompatActivity {
         editor.apply();
     }
 
+    /**
+     *
+     * @param searchResult the movie search result
+     * @param image image of movie searched
+     * @param detailType a number to identify if this movie saved or not. equals 2 if already saved.
+     */
     public void userClickedMessage(MovieInfo searchResult, Bitmap image, int detailType) {
         MovieDetailFragment detailFragment = new MovieDetailFragment(searchResult,image,detailType);
         FragmentManager fMgr = getSupportFragmentManager();
