@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 /**
  *this class is to store database
  */
-public class SoccerOpener extends SQLiteOpenHelper {
+public class SoccerOpenHelper extends SQLiteOpenHelper {
 
     protected final static String DATABASE_NAME = "SoccerFavDB";
     protected final static int VERSION_NUM = 1;
@@ -23,7 +23,7 @@ public class SoccerOpener extends SQLiteOpenHelper {
      * constructor
      * @param ctx
      */
-    public SoccerOpener(Context ctx)
+    public SoccerOpenHelper(Context ctx)
     {
         super(ctx, DATABASE_NAME, null, VERSION_NUM);
     }

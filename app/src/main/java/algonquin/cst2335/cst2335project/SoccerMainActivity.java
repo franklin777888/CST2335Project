@@ -89,7 +89,13 @@ public class SoccerMainActivity extends AppCompatActivity implements NavigationV
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener( this);
+        //navigationView.setNavigationItemSelectedListener( this);
+        navigationView.setNavigationItemSelectedListener((item)-> {
+            onOptionsItemSelected(item);
+            drawer.closeDrawer(GravityCompat.START);
+            return false;
+        });
+
 
         frameLayout = findViewById(R.id.soccerFragmentLocation);
         isTablet = frameLayout != null;

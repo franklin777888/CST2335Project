@@ -8,16 +8,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -62,20 +56,20 @@ public class SoccerFavNews extends AppCompatActivity {
      */
     private void loadDataFromDatabase() {
         //get a database connection:
-        SoccerOpener dbOpener = new SoccerOpener(this);
+        SoccerOpenHelper dbOpener = new SoccerOpenHelper(this);
         socDb = dbOpener.getWritableDatabase(); //This calls onCreate() if you've never built the table before, or onUpgrade if the version here is newer
 
         // We want to get all of the columns. Look at MyOpener.java for the definitions:
-        String [] columns = {SoccerOpener.COL_ID, SoccerOpener.COL_SOCCERIMG, SoccerOpener.COL_SOCCERTITLE, SoccerOpener.COL_SOCCERDATE, SoccerOpener.COL_SOCCERDESC, SoccerOpener.COL_SOCCERLINK};
+        String [] columns = {SoccerOpenHelper.COL_ID, SoccerOpenHelper.COL_SOCCERIMG, SoccerOpenHelper.COL_SOCCERTITLE, SoccerOpenHelper.COL_SOCCERDATE, SoccerOpenHelper.COL_SOCCERDESC, SoccerOpenHelper.COL_SOCCERLINK};
         //query all the results from the database:
-        Cursor results = socDb.query(false, SoccerOpener.TABLE_NAME, columns, null, null, null, null, null, null);
+        Cursor results = socDb.query(false, SoccerOpenHelper.TABLE_NAME, columns, null, null, null, null, null, null);
         //Now the results object has rows of results that match the query.
         //find the column index
-        int soccerImgColumnIndex = results.getColumnIndex(SoccerOpener.COL_SOCCERIMG);
-        int soccerTitleColumnIndex = results.getColumnIndex(SoccerOpener.COL_SOCCERTITLE);
-        int soccerDateColumnIndex = results.getColumnIndex(SoccerOpener.COL_SOCCERDATE);
-        int soccerDescColumnIndex = results.getColumnIndex(SoccerOpener.COL_SOCCERDESC);
-        int soccerLinkColumnIndex = results.getColumnIndex(SoccerOpener.COL_SOCCERLINK);
+        int soccerImgColumnIndex = results.getColumnIndex(SoccerOpenHelper.COL_SOCCERIMG);
+        int soccerTitleColumnIndex = results.getColumnIndex(SoccerOpenHelper.COL_SOCCERTITLE);
+        int soccerDateColumnIndex = results.getColumnIndex(SoccerOpenHelper.COL_SOCCERDATE);
+        int soccerDescColumnIndex = results.getColumnIndex(SoccerOpenHelper.COL_SOCCERDESC);
+        int soccerLinkColumnIndex = results.getColumnIndex(SoccerOpenHelper.COL_SOCCERLINK);
 
         //iterate over the results, return true if there is a next item:
         while(results.moveToNext())

@@ -47,14 +47,5 @@
     <string name="soccerQuestion">Do you like this app?</string>
     <string name="soccerHelpMsg">You clicked help button</string>
     <string name="helpSoccer">In this app, you can check up to date soccer news and click the news you are interested in then save to the favourite. Click the favourite news button to check the saved list.</string>
-    <string name="title_activity_soccer_fragment">SoccerFragment</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 </resources>

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:backgroundTint="@color/mainBackground"
     tools:context=".MainActivity">
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
@@ -22,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/toolbar"/>
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,6 +56,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
                     app:srcCompat="@drawable/carcharge" />
+
                 <ImageView
                     android:id="@+id/soccerMain"
                     android:layout_width="150dp"

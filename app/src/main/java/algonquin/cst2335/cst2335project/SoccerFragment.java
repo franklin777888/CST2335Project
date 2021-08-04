@@ -8,9 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +22,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -43,7 +40,7 @@ public class SoccerFragment extends Fragment {
     SQLiteDatabase socDb;
     Button addSoccerFav;
     Button goToFav;
-    SoccerOpener mySoccerOpener;
+    SoccerOpenHelper mySoccerOpenHelper;
     boolean isHere;
     ImageView bmImage;
     String dataImg;
@@ -122,8 +119,8 @@ public class SoccerFragment extends Fragment {
         });
 
         addSoccerFav = (Button)result.findViewById(R.id.soccerSaveBtn);
-        mySoccerOpener = new SoccerOpener(container.getContext());
-        socDb = mySoccerOpener.getWritableDatabase();
+        mySoccerOpenHelper = new SoccerOpenHelper(container.getContext());
+        socDb = mySoccerOpenHelper.getWritableDatabase();
         changeBtnText();
 
         FrameLayout frameLayout = result.findViewById(R.id.soccerFragmentLocation);
@@ -140,12 +137,12 @@ public class SoccerFragment extends Fragment {
                 changeBtnText();
             }else{
                 ContentValues newRowValues = new ContentValues();
-                newRowValues.put(SoccerOpener.COL_SOCCERIMG, dataImg);
-                newRowValues.put(SoccerOpener.COL_SOCCERTITLE, dataTitle);
-                newRowValues.put(SoccerOpener.COL_SOCCERDATE, dataDate);
-                newRowValues.put(SoccerOpener.COL_SOCCERDESC, dataDesc);
-                newRowValues.put(SoccerOpener.COL_SOCCERLINK, dataLink);
-                newId = socDb.insert(SoccerOpener.TABLE_NAME, null, newRowValues);
+                newRowValues.put(SoccerOpenHelper.COL_SOCCERIMG, dataImg);
+                newRowValues.put(SoccerOpenHelper.COL_SOCCERTITLE, dataTitle);
+                newRowValues.put(SoccerOpenHelper.COL_SOCCERDATE, dataDate);
+                newRowValues.put(SoccerOpenHelper.COL_SOCCERDESC, dataDesc);
+                newRowValues.put(SoccerOpenHelper.COL_SOCCERLINK, dataLink);
+                newId = socDb.insert(SoccerOpenHelper.TABLE_NAME, null, newRowValues);
                 changeBtnText();
             }
         });
@@ -157,8 +154,8 @@ public class SoccerFragment extends Fragment {
      */
     private void changeBtnText(){
         //query the results from the database:
-        Cursor results = socDb.query(false, SoccerOpener.TABLE_NAME, new String[]{SoccerOpener.COL_SOCCERTITLE,SoccerOpener.COL_SOCCERDATE},
-                SoccerOpener.COL_SOCCERTITLE +" = ? and " +SoccerOpener.COL_SOCCERDATE+"= ?" ,
+        Cursor results = socDb.query(false, SoccerOpenHelper.TABLE_NAME, new String[]{SoccerOpenHelper.COL_SOCCERTITLE, SoccerOpenHelper.COL_SOCCERDATE},
+                SoccerOpenHelper.COL_SOCCERTITLE +" = ? and " + SoccerOpenHelper.COL_SOCCERDATE+"= ?" ,
                 new String[]{String.valueOf(dataTitle),String.valueOf(dataDate)}, null, null, null, null);
         if(results.getCount()>0){
             isHere=true;
@@ -175,7 +172,7 @@ public class SoccerFragment extends Fragment {
      */
     protected void deleteSoccer(SoccerNews soccerNews)
     {
-        socDb.delete(SoccerOpener.TABLE_NAME, SoccerOpener.COL_SOCCERTITLE +" = ? and " +SoccerOpener.COL_SOCCERDATE+" = ?",  new String[]{String.valueOf(dataTitle),String.valueOf(dataDate)});
+        socDb.delete(SoccerOpenHelper.TABLE_NAME, SoccerOpenHelper.COL_SOCCERTITLE +" = ? and " + SoccerOpenHelper.COL_SOCCERDATE+" = ?",  new String[]{String.valueOf(dataTitle),String.valueOf(dataDate)});
     }
 
 
