@@ -4,7 +4,12 @@
     <string name="movieName_message">输入电影名字</string>
     <string name="button">搜索电影</string>
     <string name="hint_message">在此输入电影英文名</string>
-    <string name="help_message_movie">具体步骤如下</string>
+    <string name="help_message_movie">
+         1) 输入电影名字进行搜索\n
+        2) 点击添加键添加电影至收藏夹\n
+        3) 点击删除键重新搜索电影\n
+        4) 点击收藏夹已收藏电影名单\n
+        5) 点击查看或删除键以查看或删除该电影\n</string>
     <string name="help_title_movie">软件使用指南</string>
     <string name="searching_message">搜索中</string>
     <string name="movie_not_found">抱歉，搜索不到.</string>

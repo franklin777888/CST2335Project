@@ -5,7 +5,13 @@
     <string name="movieName_message">Enter the name of a movie</string>
     <string name="button">Search Movie</string>
     <string name="hint_message">Type movie name here</string>
-    <string name="help_message_movie">See Instruction here</string>
+    <string name="help_message_movie">
+        1) Type a movie name and click search button\n
+        2) Click ADD icon to save to favourite\n
+        3) Click CLEAR icon to start a new search\n
+        4) Click FAVOURITE to see saved movies list\n
+        5) Click a movie to view detail or delete\n
+    </string>
     <string name="help_title_movie">Help Menu</string>
     <string name="searching_message">Searching... Please wait: </string>
     <string name="movie_not_found">Sorry, cannot find this movie.</string>
