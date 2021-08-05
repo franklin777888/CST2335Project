@@ -43,6 +43,13 @@ public class MovieDetailFragment extends Fragment {
         this.detailType = detailType;
     }
 
+    /**
+     * This method creates and returns the view associated with the fragment which is the details of the searched movie.
+     * @param inflater layout inflater of XML file
+     * @param container container that used to contain other views, i.e. the different textview(s)
+     * @param savedInstanceState the saved instance in the bundle
+     * @return detailsView of the searched movie
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View detailsView = inflater.inflate(R.layout.movie_detail, container, false);
@@ -87,6 +94,12 @@ public class MovieDetailFragment extends Fragment {
         return detailsView;
     }
 
+    /**
+     * This method is set to add a selected movie to favourite.
+     * User will be notified if this movie is already saved.
+     * If new, newID will be generated and notify user.
+     * @param searchResult
+     */
     public void notifyMessageAdded(MovieInfo searchResult) {
         AlertDialog.Builder builder = new AlertDialog.Builder( getContext() );
 

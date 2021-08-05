@@ -22,6 +22,10 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
+/**
+ * This class to create the favourite movie fragment.
+ */
 public class MovieFavoriteFragment extends Fragment {
     ArrayList<MovieInfo> messages = new ArrayList<>();
     MyMovieAdapter adt= new MyMovieAdapter();
@@ -31,6 +35,13 @@ public class MovieFavoriteFragment extends Fragment {
 
     Bitmap image;
 
+    /**
+     * This method creates and returns the view associated with the fragment which is the list of favourite movies.
+     * @param inflater layout inflater of XML file
+     * @param container container that used to contain other views
+     * @param savedInstanceState the saved instance in the bundle
+     * @return movieLayout of the list of favourite movies
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View movieLayout = inflater.inflate(R.layout.movie_list,container, false);
@@ -56,7 +67,6 @@ public class MovieFavoriteFragment extends Fragment {
         int actorsCol = results.getColumnIndex(MovieMyOpenHelper.col_actors);
         int plotCol = results.getColumnIndex(MovieMyOpenHelper.col_plot);
         int imageCol = results.getColumnIndex(MovieMyOpenHelper.col_image);
-        int imdbIDCol = results.getColumnIndex(MovieMyOpenHelper.col_id);
 
         while(results.moveToNext()){
             long id = results.getInt(_idCol);
@@ -74,6 +84,11 @@ public class MovieFavoriteFragment extends Fragment {
         return movieLayout;
     }
 
+    /**
+     * This method to show rows of favourite movie list,
+     * and allow user to view details of selected movie,
+     * or delete selected movie from favourite list.
+     */
     private class MyRowViews extends RecyclerView.ViewHolder{
         TextView titleText;
         TextView ratingText;
@@ -130,7 +145,19 @@ public class MovieFavoriteFragment extends Fragment {
         }
     }
 
+    /**
+     * This class sets up the view for each movie in the data set
+     */
     private class MyMovieAdapter extends RecyclerView.Adapter<MyRowViews>{
+
+        /**
+         * This method to create a new ViewHolder object whenever the RecyvlerView needs a new one.
+         * The row layout will be inflated and passed to the ViewHolder object so that each child view
+         * can be found and stored.
+         * @param parent The ViewGroup is the parent view that will hold the cell that are about to create
+         * @param viewType the view type of the new View
+         * @return initRow, which is the object of saved movies
+         */
         @Override
         public MyRowViews onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater inflater = getLayoutInflater();// LayoutInflater is for loading XML layouts
@@ -142,6 +169,11 @@ public class MovieFavoriteFragment extends Fragment {
             return initRow;// will initialize the TextView
         }
 
+        /**
+         * This method to update the contents of the itemView, which is the list of favourite movies
+         * @param holder holder of MyRowViews
+         * @param position the row position of a movie saved in favourite
+         */
         @Override //says ViewHolder, but it's actually MyRowViews object; position is the row we're building
         public void onBindViewHolder(MyRowViews holder, int position) {
             holder.titleText.setText(messages.get(position).getTitle());
@@ -152,7 +184,11 @@ public class MovieFavoriteFragment extends Fragment {
             holder.setPosition(position);
         }
 
-        @Override // how many itmes to show
+        /**
+         * This method to get the size of the Array of movie list
+         * @return size of the Array of movie list
+         */
+        @Override // how many items to show
         public int getItemCount() {
             return messages.size();
         }
