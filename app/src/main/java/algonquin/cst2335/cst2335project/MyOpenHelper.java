@@ -6,6 +6,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+/**
+ * This class helps make and connect to a local database
+ *
+ */
 public class MyOpenHelper extends SQLiteOpenHelper {
     public static final String name="TheDatabase";
     public static final int version=1;

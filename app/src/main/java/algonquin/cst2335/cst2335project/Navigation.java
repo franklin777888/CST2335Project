@@ -17,6 +17,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
+/**
+ * This class is the first user interface when getting into the app.
+ */
+
 public class Navigation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,9 @@ public class Navigation extends AppCompatActivity {
         return true;
     }
     @Override
+    /**
+     * This method specifies action taken when menu item is clicked.
+     */
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.OCTransport:

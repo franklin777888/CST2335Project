@@ -33,9 +33,8 @@ import com.google.android.material.snackbar.Snackbar;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
+
+
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -55,6 +54,13 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
+
+/**
+ * This is the main class of the app. It accepts user input and responds correspondingly.
+ * AlertDiag is used to 1. show progress of loading data; 2. give no such stop number message
+ * Snackbar is used to say one list item is deleted.
+ * Toast is used to give hint when user input is not fully digit.
+ */
 public class OCTransport extends AppCompatActivity {
     private String stringURL,routeNum,routeHeadingFor,stopNum;
     RecyclerView routeListView;
@@ -108,6 +114,7 @@ public class OCTransport extends AppCompatActivity {
 
                         //get data from the server
                         JSONObject theDocument = new JSONObject(text);
+
                         boolean notExistingStopNumber=theDocument.getJSONObject("GetRouteSummaryForStopResult").isNull("StopDescription");
                        //check first if the stop number exists.
                         if(notExistingStopNumber){
@@ -125,11 +132,28 @@ public class OCTransport extends AppCompatActivity {
                             // can't write main ui item in new thread, so go back to main ui thread
                             runOnUiThread(()->{
                                 try {
-                                    JSONArray routeArray = theDocument.getJSONObject("GetRouteSummaryForStopResult").getJSONObject("Routes").getJSONArray ( "Route" );
-                                    for(int i=0;i<routeArray.length();i++) {
-                                        JSONObject positioni = routeArray.getJSONObject(i);
-                                        routeNum = positioni.getString("RouteNo");
-                                        routeHeadingFor = positioni.getString("RouteHeading");
+                                    Object obj=theDocument.getJSONObject("GetRouteSummaryForStopResult").getJSONObject("Routes").optJSONArray("Route");
+                                    if(obj instanceof JSONArray){
+                                        JSONArray routeArray = (JSONArray) obj;
+                                        for(int i=0;i<routeArray.length();i++) {
+                                            JSONObject positioni = routeArray.getJSONObject(i);
+                                            routeNum = positioni.getString("RouteNo");
+                                            routeHeadingFor = positioni.getString("RouteHeading");
+                                            stopNum=theDocument.getJSONObject("GetRouteSummaryForStopResult").getString("StopNo");
+                                            //use the retrieved data to load the list in recycler view
+                                            thisItem = new ListItem(routeNum, routeHeadingFor,stopNum);
+                                            routesFound.add(thisItem);
+                                            adt.notifyItemInserted(routesFound.size()-1);
+                                            //insert columns in database table
+                                            newRow.put(MyOpenHelper.col_stop_number,stopNum);
+                                            newRow.put(MyOpenHelper.col_route_number,routeNum);
+                                            newRow.put(MyOpenHelper.col_heading_destination,routeHeadingFor);
+                                            db.insert(MyOpenHelper.TABLE_NAME,MyOpenHelper.col_route_number,newRow);
+                                        }
+                                    }else{
+                                        JSONObject route=theDocument.getJSONObject("GetRouteSummaryForStopResult").getJSONObject("Routes").getJSONObject ( "Route" );
+                                        routeNum = route.getString("RouteNo");
+                                        routeHeadingFor = route.getString("RouteHeading");
                                         stopNum=theDocument.getJSONObject("GetRouteSummaryForStopResult").getString("StopNo");
                                         //use the retrieved data to load the list in recycler view
                                         thisItem = new ListItem(routeNum, routeHeadingFor,stopNum);
@@ -141,14 +165,8 @@ public class OCTransport extends AppCompatActivity {
                                         newRow.put(MyOpenHelper.col_heading_destination,routeHeadingFor);
                                         db.insert(MyOpenHelper.TABLE_NAME,MyOpenHelper.col_route_number,newRow);
                                     }
-                                  }catch (JSONException e) {
-                                    dialog.hide();
-                                    AlertDialog.Builder builder = new AlertDialog.Builder( OCTransport.this );
-                                    builder.setMessage("No such stop Number currently exists.");
-                                    builder.setTitle("No Such Stop Number");
-                                    builder.setNegativeButton("OK",(dia,cl)->{
-                                    });
-                                    builder.create().show();
+                                  }catch (JSONException  e) {
+                                    e.printStackTrace();
                                 }
                                 dialog.hide();
                             });
@@ -165,6 +183,10 @@ public class OCTransport extends AppCompatActivity {
         String number = prefs.getString("number", "");
         input.setText(number);
     }
+
+    /**
+     * this inner class represents the single item of the list.
+     */
     public class ListItem{
         String routeNumber;
         String routeHeading;
@@ -199,6 +221,9 @@ public class OCTransport extends AppCompatActivity {
         }
     }
 
+    /**
+     * this is used for the recycler view
+     */
     private class MyTransportAdapter extends RecyclerView.Adapter<MyRowViews>{
         @Override
         public MyRowViews onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -219,6 +244,9 @@ public class OCTransport extends AppCompatActivity {
         }
     }
 
+    /**
+     * this is used to represent a row in the list
+     */
     private class MyRowViews extends RecyclerView.ViewHolder{
         TextView route;
         int position=-1;
@@ -321,16 +349,29 @@ public class OCTransport extends AppCompatActivity {
                 JSONObject theDocument = new JSONObject(text);
                 runOnUiThread(()->{
                         try {
-                            JSONObject trip=theDocument.getJSONObject("GetNextTripsForStopResult").getJSONObject("Route").getJSONArray("RouteDirection").getJSONObject(0).getJSONObject("Trips").getJSONArray("Trip").getJSONObject(0);
-                            String longtitude=trip.getString("Longitude");
-                            String latitude=trip.getString("Latitude");
-                            String tripStartTime=trip.getString("TripStartTime");
-                            String adjustedScheduleTime=trip.getString("AdjustedScheduleTime");
+                            JSONObject trip;
+                            String longtitude,latitude,tripStartTime,adjustedScheduleTime;
+                            // this if is not nessessary in normal case. It's just because the OCTransport server data format not consistent.
+                            if(theDocument.getJSONObject("GetNextTripsForStopResult").getJSONObject("Route").optJSONArray("RouteDirection")!=null){
+                                trip=theDocument.getJSONObject("GetNextTripsForStopResult").getJSONObject("Route").optJSONArray("RouteDirection").getJSONObject(0).getJSONObject("Trips").getJSONArray("Trip").getJSONObject(0);
+                                longtitude=trip.optString("Longitude");
+                                latitude=trip.optString("Latitude");
+                                tripStartTime=trip.optString("TripStartTime");
+                                adjustedScheduleTime=trip.optString("AdjustedScheduleTime");
+                            }
+                            else{
+                                trip=theDocument.getJSONObject("GetNextTripsForStopResult").getJSONObject("Route").getJSONObject("RouteDirection").getJSONObject("Trips").getJSONArray("Trip").getJSONObject(0);
+                                longtitude=trip.optString("Longitude");
+                                latitude=trip.optString("Latitude");
+                                tripStartTime=trip.optString("TripStartTime");
+                                adjustedScheduleTime=trip.optString("AdjustedScheduleTime");
+                            }
                             //load the ListItem with data, then the data can be passed to detailfragment by the fragment's constructor.
                             ListItem detail=new ListItem(route.routeNumber,route.routeHeading,route.stopNum,longtitude,latitude,tripStartTime,adjustedScheduleTime);
                             enter.setVisibility(View.INVISIBLE);
                             RouteDetailFragment routeFragment=new RouteDetailFragment(detail);
                             getSupportFragmentManager().beginTransaction().add(R.id.fragment,routeFragment).commit();
+
                         } catch (JSONException e) {
                             // if there is no correct data from server, display nodata fragment.
                             enter.setVisibility(View.INVISIBLE);

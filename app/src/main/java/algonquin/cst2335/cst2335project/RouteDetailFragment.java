@@ -36,21 +36,18 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
+/**
+ * This class is used to get and show the detail of one selected item on the fragment.
+ */
 public class RouteDetailFragment extends Fragment {
     OCTransport.ListItem chosenRoute;
 
     public RouteDetailFragment(OCTransport.ListItem route){
         chosenRoute=route;
     }
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View detailsView=inflater.inflate(R.layout.route_details,container,false);
-
-
         TextView destination=detailsView.findViewById(R.id.des);
         TextView latitude =detailsView.findViewById(R.id.lat);
         TextView longitude=detailsView.findViewById(R.id.longtitude);
@@ -69,8 +66,4 @@ public class RouteDetailFragment extends Fragment {
         });
         return detailsView;
     }
-
-
-
-
 }
