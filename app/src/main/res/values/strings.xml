@@ -23,6 +23,10 @@
     <string name="delete_movie_from_favorite">Delete</string>
     <string name="view_or_delete">Do you want to view detail or delete the movie?</string>
     <string name="view_detail_movie">View Detail</string>
+    <string name="carPage">You clicked car charging station finder page</string>
+    <string name="busPage">You clicked OCTranspo bus route page</string>
+    <string name="moviePage">You clicked movie search page</string>
+    <string name="soccerPage">You clicked soccer news page</string>
 
 
 

@@ -21,5 +21,9 @@
     <string name="delete_movie_from_favorite">删除</string>
     <string name="view_or_delete">请问您需要查看影片详情还是从收藏列表中删除影片?</string>
     <string name="view_detail_movie">查看详情</string>
+    <string name="carPage">您已进入汽车充电桩查询页面</string>
+    <string name="busPage">您已进入公交查询页面</string>
+    <string name="moviePage">您已进入电影搜索页面</string>
+    <string name="soccerPage">您已进入足球新闻页面</string>
 
 </resources>

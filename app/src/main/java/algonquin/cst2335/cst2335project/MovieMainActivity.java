@@ -2,6 +2,7 @@ package algonquin.cst2335.cst2335project;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -69,17 +70,34 @@ public class MovieMainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method allows user to identify an item, check help menu / favourites, and search new movies.
+     * This method allows user to identify an item.
+     * Select one of the four apps, Or view favourite list, or go for help menu.
      * @param item item of menu
      * @return true if successfully handle a menu item, false if fail.
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        TextView messageText = findViewById(R.id.message);
-        TextView timeText = findViewById(R.id.time);
+        String message = null;
 
         switch(item.getItemId()) {
+
+            case R.id.goMovie:
+                message = getResources().getString(R.string.moviePage);
+                startActivity(new Intent(MovieMainActivity.this, MovieMainActivity.class));
+                break;
+            case R.id.goBus:
+                message = getResources().getString(R.string.busPage);
+                startActivity(new Intent(MovieMainActivity.this, BusMainActivity.class));
+                break;
+            case R.id.goCar:
+                message = getResources().getString(R.string.carPage);
+                startActivity(new Intent(MovieMainActivity.this, CarMainActivity.class));
+                break;
+            case R.id.goSoccer:
+                message = getResources().getString(R.string.soccerPage);
+                startActivity(new Intent(MovieMainActivity.this, SoccerMainActivity.class));
+                break;
 
             case R.id.help_menu:
                 runHelp();
