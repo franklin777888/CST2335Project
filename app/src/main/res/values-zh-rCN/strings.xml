@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- main -->
-    <string name="app_name" translatable="false">第六组</string>
+    <string name="app_name" translatable="false">G6</string>
     <string name="version">版本1.0</string>
     <string name="author1">电影搜索 作者：余文亮</string>
     <string name="author2">公交查询 作者：刘弘阳</string>
@@ -19,6 +19,7 @@
     <string name="busPage">您已进入公交查询页面</string>
     <string name="moviePage">您已进入电影搜索页面</string>
     <string name="soccerPage">您已进入足球新闻页面</string>
+    <string name="favPage">您已进入足球新闻收藏夹页面</string>
     <string name="NavigationDrawer">导航菜单</string>
     <string name="helpPage">点击进入相关页面</string>
 

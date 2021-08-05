@@ -30,7 +30,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 /**
- * this class is to set up the details fragment for tablet, extends Fragment
+ * this class is to set up the details fragment, extends Fragment
  */
 public class SoccerFragment extends Fragment {
 

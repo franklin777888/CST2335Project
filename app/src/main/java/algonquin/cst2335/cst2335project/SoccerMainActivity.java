@@ -153,6 +153,10 @@ public class SoccerMainActivity extends AppCompatActivity implements NavigationV
     public boolean onOptionsItemSelected(MenuItem item){
         String message = null;
         switch (item.getItemId()){
+            case R.id.goFav:
+                message = getResources().getString(R.string.favPage);
+                startActivity(new Intent(SoccerMainActivity.this, SoccerFavNews.class));
+                break;
             case R.id.goMovie:
                 message = getResources().getString(R.string.moviePage);
                 startActivity(new Intent(SoccerMainActivity.this, MovieMainActivity.class));
@@ -190,6 +194,10 @@ public class SoccerMainActivity extends AppCompatActivity implements NavigationV
     public boolean onNavigationItemSelected(MenuItem item) {
         String message = null;
         switch (item.getItemId()) {
+            case R.id.goFav:
+                message = getResources().getString(R.string.favPage);
+                startActivity(new Intent(SoccerMainActivity.this, SoccerFavNews.class));
+                break;
             case R.id.goMovie:
                 message = getResources().getString(R.string.moviePage);
                 startActivity(new Intent(SoccerMainActivity.this, MovieMainActivity.class));
@@ -372,6 +380,7 @@ public class SoccerMainActivity extends AppCompatActivity implements NavigationV
             MyRowViews row=new MyRowViews(view);
             return row;
         }
+
 
         /**
          * This method is to show the view
