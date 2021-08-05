@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">CST2335Project</string>
+    <string name="app_name">CST2335 Project</string>
+    <string name="open"></string>
+    <string name="close"></string>
+    <string name="OC_Transpo_App">OC Transpo App</string>
+    <string name="help">Help</string>
+    <string name="runApp">Search</string>
+    <string name="enter">ENTER</string>
+
+
+
 </resources>
