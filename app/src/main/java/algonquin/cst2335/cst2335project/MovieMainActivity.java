@@ -7,12 +7,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -27,10 +25,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -45,17 +41,13 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 /**
  * This class to perform major functions for movie search app.
  */
-public class MovieSearch extends AppCompatActivity {
+public class MovieMainActivity extends AppCompatActivity {
 
     SharedPreferences prefs;
     Toolbar myToolbar = null;
@@ -88,11 +80,6 @@ public class MovieSearch extends AppCompatActivity {
         TextView timeText = findViewById(R.id.time);
 
         switch(item.getItemId()) {
-            case R.id.hide_views:
-                messageText.setVisibility(View.INVISIBLE);
-                timeText.setVisibility(View.INVISIBLE);
-                myEdit.setText("");
-                break;
 
             case R.id.help_menu:
                 runHelp();
@@ -115,7 +102,7 @@ public class MovieSearch extends AppCompatActivity {
      * This method to show help menu.
      */
     private void runHelp() {
-        AlertDialog dialog = new AlertDialog.Builder(MovieSearch.this)
+        AlertDialog dialog = new AlertDialog.Builder(MovieMainActivity.this)
                 .setTitle(R.string.help_title_movie)
                 .setMessage(R.string.help_message_movie)
                 .setPositiveButton("OK", (click, arg) ->{
@@ -140,9 +127,9 @@ public class MovieSearch extends AppCompatActivity {
      */
     private void runSearchMovie(String movieName) {
 
-        AlertDialog dialog = new AlertDialog.Builder(MovieSearch.this)
+        AlertDialog dialog = new AlertDialog.Builder(MovieMainActivity.this)
                 .setMessage(R.string.searching_message)
-                .setView(new ProgressBar(MovieSearch.this))
+                .setView(new ProgressBar(MovieMainActivity.this))
                 .show();
 
         SharedPreferences.Editor editor = prefs.edit();

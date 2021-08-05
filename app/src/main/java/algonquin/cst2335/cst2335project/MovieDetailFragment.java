@@ -75,7 +75,7 @@ public class MovieDetailFragment extends Fragment {
         if(detailType == 2){
             closeButton.setOnClickListener(goBackClicked -> {
                 getParentFragmentManager().beginTransaction().remove(this).commit();
-                MovieSearch parentActivity = (MovieSearch) getContext();
+                MovieMainActivity parentActivity = (MovieMainActivity) getContext();
 
             });
         }

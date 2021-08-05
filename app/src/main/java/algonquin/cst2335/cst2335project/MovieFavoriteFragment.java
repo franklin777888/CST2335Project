@@ -134,7 +134,7 @@ public class MovieFavoriteFragment extends Fragment {
                             MovieInfo searchResult = messages.get(chosenPosition);
                             int detailType = 2;
                             image = BitmapFactory.decodeFile(getContext().getFilesDir() + "/" + messages.get(chosenPosition).getTitle() + ".png");
-                            MovieSearch parentActivity = (MovieSearch) getContext();
+                            MovieMainActivity parentActivity = (MovieMainActivity) getContext();
                             parentActivity.userClickedMessage(searchResult,image, detailType);
                         })
                         .create().show();
