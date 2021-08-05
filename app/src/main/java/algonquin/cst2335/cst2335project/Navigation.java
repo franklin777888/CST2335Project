@@ -1,5 +1,6 @@
 package algonquin.cst2335.cst2335project;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -49,8 +50,19 @@ public class Navigation extends AppCompatActivity {
                 Intent oct=new Intent(Navigation.this,OCTransport.class);
                 startActivity(oct);
                 break;
+            case R.id.help:
+                //help info displayed
+                AlertDialog.Builder builder = new AlertDialog.Builder( Navigation.this );
+                builder.setMessage("Enter four-digit stop number (such as 3017,3045,3050) and if it exists, a list of the route passing this stop will be displayed. " +
+                        "Please refer to https://www.octranspo.com/en/plan-your-trip/travel-tools/bus-stop-number-list#560StationsOCT for " +
+                        "the full list. Click each item can get detail info about the route. In some cases, the server gives no detail data, then the message that no data available will be displayed." +
+                        "Long click the item in the list will delete it.");
+                builder.setTitle("Help Information");
+                builder.setNegativeButton("OK",(dialog,cl)->{
+                });
+                builder.create().show();
+                break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

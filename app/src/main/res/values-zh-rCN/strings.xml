@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="OC_Transpo_App">渥太华公交站查询</string>
+    <string name="help">帮助</string>
+    <string name="runApp">查询</string>
+    <string name="enter">输入</string>
+</resources>

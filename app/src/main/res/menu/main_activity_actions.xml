@@ -3,9 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/help"
+        android:icon="@drawable/help"
+        android:title="@string/help"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/OCTransport"
         android:icon="@drawable/bus"
-        android:title="Run OCTranspo"
+        android:title="@string/runApp"
         app:showAsAction="always" />
+
+
 
 </menu>
