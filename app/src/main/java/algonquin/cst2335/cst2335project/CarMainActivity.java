@@ -2,7 +2,6 @@ package algonquin.cst2335.cst2335project;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +23,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-public class ChargingFinderSearch extends AppCompatActivity {
+public class CarMainActivity extends AppCompatActivity {
     RecyclerView stationListView;
     ArrayList<ChargingListItem> locationFound = new ArrayList<>();  //hold input location name
     chargingAdapter adt;
@@ -129,10 +127,10 @@ public class ChargingFinderSearch extends AppCompatActivity {
     }
 
     public void userClickedMessage(ChargingListItem location){
-        AlertDialog.Builder dialog = new AlertDialog.Builder(ChargingFinderSearch.this);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(CarMainActivity.this);
         dialog.setTitle("Getting data")
                 .setMessage("Loading data...")
-                .setView(new ProgressBar(ChargingFinderSearch.this))
+                .setView(new ProgressBar(CarMainActivity.this))
                 .show();
     }
 }

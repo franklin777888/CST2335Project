@@ -1,6 +1,79 @@
 <resources>
-    <string name="app_name">CST2335Project</string>
-    <string name="charging_finder">Elec-Car Charging Station Finder</string>
+    <!-- main -->
+    <string name="app_name">G6</string>
+    <string name="version">Version 1.0</string>
+    <string name="author1">Movie Information Author: Franklin Yu</string>
+    <string name="author2">OCTranspo Bus Route Author: Hongyang Liu</string>
+    <string name="author3">Soccer Games Author: Doris Gao</string>
+    <string name="author4">Car Charging Station Author: Mengying Li</string>
+    <string name="welcomeMain">Welcome to Our App!</string>
+    <string name="movie">Movie Information</string>
+    <string name="bus">Bus Route</string>
+    <string name="soccer">Soccer News</string>
+    <string name="car">Car Charge Information</string>
+    <string name="help">Help</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="carPage">You clicked car charging station finder page</string>
+    <string name="busPage">You clicked OCTranspo bus route page</string>
+    <string name="moviePage">You clicked movie search page</string>
+    <string name="soccerPage">You clicked soccer news page</string>
+    <string name="favPage">You clicked favorite soccer news page</string>
+    <string name="NavigationDrawer">NavigationDrawer</string>
+    <string name="helpPage">Click icons you will be redirect to related page</string>
+
+    <!--    Soccer-->
+    <string name="soccerRatingCmt">Your Comment:</string>
+    <string name="soccerComment">Your Comment Is Important To Us!</string>
+    <string name="soccerBoxRate">Rating</string>
+    <string name="soccerYes">Yes</string>
+    <string name="soccerNo">No</string>
+    <string name="soccerBoxMsg">Please rate our app</string>
+    <string name="soccerUndo">Undo</string>
+    <string name="soccer_toast_message">This is a soccer news app!</string>
+    <string name="soccer_snackbar_msg1">You like this app!</string>
+    <string name="soccer_snackbar_msg2">You do not like this app!</string>
+    <string name="soccerNewsTitle">News Title</string>
+    <string name="soccerDate">News Date</string>
+    <string name="soccerLink">The Web Link</string>
+    <string name="soccerDescription">News Description</string>
+    <string name="soccerLinkBrsBtn">OPEN IN THE BROWSER</string>
+    <string name="soccerSaveBtn">SAVE TO MY FAVOURITE</string>
+    <string name="soccerSaveFavBtn">Save to Favourite</string>
+    <string name="soccerRemoveFavBtn">Remove from Favourite</string>
+    <string name="goToSoccerFavBtn">GO TO MY FAVOURITE NEWS</string>
+    <string name="soccerFavNewsBtn">FAVOURITE NEWS</string>
+    <string name="soccerFavTitles">MY FAVOURITE NEWS</string>
+    <string name="soccerInstr">Instructions</string>
+    <string name="soccerQuestion">Do you like this app?</string>
+    <string name="soccerHelpMsg">You clicked help button</string>
+    <string name="helpSoccer">In this app, you can check up to date soccer news. Click the news you are interested in can save to the favourite. Click the favourite news button to check the saved list.</string>
+
+    <!--    Bus-->
+    <string name="OC_Transpo_App">OC Transpo App</string>
+    <string name="runApp">Search</string>
+    <string name="enter">ENTER</string>
+
+    <!--    Movie-->
+    <string name="movieName_message">Enter the name of a movie</string>
+    <string name="movieSearchButton">Search Movie</string>
+    <string name="movie_hint_message">Type movie name here</string>
+    <string name="help_message_movie">
+        1) Type a movie name and click search button\n
+        2) Click ADD icon to save to favourite\n
+        3) Click CLEAR icon to start a new search\n
+        4) Click FAVOURITE to see saved movies list\n
+        5) Click a movie to view detail or delete\n
+    </string>
+    <string name="help_title_movie">Help Menu</string>
+    <string name="movie_searching_message">Searching... Please wait: </string>
+    <string name="movie_not_found">Sorry, cannot find this movie.</string>
+    <string name="movie_add_to_favorite">Do you want to add this movie to your favourite?</string>
+    <string name="movie_cancel_add_to_favorite">Cancel</string>
+    <string name="add_to_favoritemovie">Add</string>
+    <string name="movie_duplicated_add">This movie has already in your favourite movie list.</string>
+    <string name="undo_movie_add_to_favorite">Undo</string>
+    <string name="delete_movie_from_favorite">Delete</string>
+    <string name="view_or_delete_movie">Do you want to view detail or delete the movie?</string>
+    <string name="view_detail_movie">View Detail</string>
 </resources>

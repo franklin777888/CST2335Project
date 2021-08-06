@@ -10,9 +10,9 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 public class ChargingDetailFragment extends Fragment {
-    ChargingFinderSearch.ChargingListItem chosenLocation;
+    CarMainActivity.ChargingListItem chosenLocation;
     int chosenPosition;
-    public ChargingDetailFragment(ChargingFinderSearch.ChargingListItem location,int position){
+    public ChargingDetailFragment(CarMainActivity.ChargingListItem location, int position){
         chosenLocation = location;
     }
     @Override

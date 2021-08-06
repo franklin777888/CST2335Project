@@ -1,54 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/mainBackground"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <Button
-        android:id="@+id/OCTranspo"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="OCTranspo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        tools:openDrawer="start">
 
-    <Button
-        android:id="@+id/StationFinderButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Charging Station finder"
-        app:layout_constraintStart_toStartOf="@+id/OCTranspo"
-        app:layout_constraintTop_toBottomOf="@+id/OCTranspo" />
+        <!--Item 1, what shows up on screen-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/MovieButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Movie"
-        app:layout_constraintStart_toStartOf="@+id/StationFinderButton"
-        app:layout_constraintTop_toBottomOf="@+id/StationFinderButton" />
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/toolbar"/>
 
-    <Button
-        android:id="@+id/SoccerButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Soccer Game"
-        app:layout_constraintStart_toStartOf="@+id/MovieButton"
-        app:layout_constraintTop_toBottomOf="@+id/MovieButton" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/movieMain"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginRight="20dp"
+                    app:srcCompat="@drawable/movie" />
+
+                <ImageView
+                    android:id="@+id/busMain"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_toRightOf="@+id/movieMain"
+                    app:srcCompat="@drawable/octranspo" />
+
+                <ImageView
+                    android:id="@+id/carMain"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_below="@+id/movieMain"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    app:srcCompat="@drawable/carcharge" />
+
+                <ImageView
+                    android:id="@+id/soccerMain"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_below="@+id/busMain"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/carMain"
+                    app:srcCompat="@drawable/soccer" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/toolbar"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="70dp"
+                android:fontFamily="sans-serif-black"
+                android:text="@string/welcomeMain"
+                android:textColor="@color/mainTitle"
+                android:textSize="30dp" />
+
+
+        </RelativeLayout>
+        <!--Item 2, what pops out on the menu(NavigationView)-->
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/main_header_layout"
+            app:menu="@menu/main_menu"/>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+</RelativeLayout>
