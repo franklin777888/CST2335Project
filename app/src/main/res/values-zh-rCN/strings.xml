@@ -51,9 +51,12 @@
     <string name="soccerHelpMsg">你点击了帮助按钮</string>
     <string name="helpSoccer">这个应用为您提供最新的足球新闻，点击新闻可以保存到收藏夹，点击”我最喜欢的新闻“可以查看收藏夹</string>
 
+    <!--    Bus-->
     <string name="OC_Transpo_App">渥太华公交站查询</string>
     <string name="runApp">查询</string>
     <string name="enter">输入</string>
+
+    <!--    Movie-->
     <string name="movieName_message">输入电影名字</string>
     <string name="movieSearchButton">搜索电影</string>
     <string name="movie_hint_message">在此输入电影英文名</string>
