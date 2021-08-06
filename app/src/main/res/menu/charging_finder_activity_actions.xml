@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/delete_sta"
+        android:icon="@drawable/finder_clear"
+        android:title="Clear Information"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/favourites_sta"
+        android:icon="@drawable/charg_favourites"
+        android:title="favourites"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/id_charg_help_menu"
+        android:icon="@drawable/charg_help"
+        android:title="Help Menu"
+        app:showAsAction="always" />
+</menu>
