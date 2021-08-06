@@ -48,5 +48,9 @@
     <string name="soccerQuestion">Do you like this app?</string>
     <string name="soccerHelpMsg">You clicked help button</string>
     <string name="helpSoccer">In this app, you can check up to date soccer news. Click the news you are interested in can save to the favourite. Click the favourite news button to check the saved list.</string>
+    <string name="OC_Transpo_App">OC Transpo App</string>
+    <string name="runApp">Search</string>
+    <string name="enter">ENTER</string>
+
 
 </resources>
