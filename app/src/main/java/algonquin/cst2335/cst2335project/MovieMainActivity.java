@@ -11,11 +11,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -146,7 +144,7 @@ public class MovieMainActivity extends AppCompatActivity {
     private void runSearchMovie(String movieName) {
 
         AlertDialog dialog = new AlertDialog.Builder(MovieMainActivity.this)
-                .setMessage(R.string.searching_message)
+                .setMessage(R.string.movie_searching_message)
                 .setView(new ProgressBar(MovieMainActivity.this))
                 .show();
 

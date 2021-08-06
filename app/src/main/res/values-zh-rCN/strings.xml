@@ -2,8 +2,8 @@
 <resources>
     <string name="app_name">第六组</string>
     <string name="movieName_message">输入电影名字</string>
-    <string name="button">搜索电影</string>
-    <string name="hint_message">在此输入电影英文名</string>
+    <string name="movieSearchButton">搜索电影</string>
+    <string name="movie_hint_message">在此输入电影英文名</string>
     <string name="help_message_movie">
          1) 输入电影名字进行搜索\n
         2) 点击添加键添加电影至收藏夹\n
@@ -11,15 +11,15 @@
         4) 点击收藏夹已收藏电影名单\n
         5) 点击查看或删除键以查看或删除该电影\n</string>
     <string name="help_title_movie">软件使用指南</string>
-    <string name="searching_message">搜索中</string>
+    <string name="movie_searching_message">搜索中</string>
     <string name="movie_not_found">抱歉，搜索不到.</string>
     <string name="movie_add_to_favorite">加入这部电影至收藏吗？</string>
-    <string name="cancel_add_to_favorite">取消</string>
-    <string name="add_to_favorite">添加</string>
+    <string name="movie_cancel_add_to_favorite">取消</string>
+    <string name="add_to_favoritemovie">添加</string>
     <string name="movie_duplicated_add">这部影片已被添加至收藏！</string>
     <string name="undo_movie_add_to_favorite">撤销</string>
     <string name="delete_movie_from_favorite">删除</string>
-    <string name="view_or_delete">请问您需要查看影片详情还是从收藏列表中删除影片?</string>
+    <string name="view_or_delete_movie">请问您需要查看影片详情还是从收藏列表中删除影片?</string>
     <string name="view_detail_movie">查看详情</string>
     <string name="carPage">您已进入汽车充电桩查询页面</string>
     <string name="busPage">您已进入公交查询页面</string>

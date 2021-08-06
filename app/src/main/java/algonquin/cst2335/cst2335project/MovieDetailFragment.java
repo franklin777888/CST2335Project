@@ -105,8 +105,8 @@ public class MovieDetailFragment extends Fragment {
 
         builder.setMessage("Add it to your favourite: "+ searchResult.getTitle())
                 .setTitle(R.string.movie_add_to_favorite)
-                .setNegativeButton(R.string.cancel_add_to_favorite, (dialog, cl) ->{ })
-                .setPositiveButton(R.string.add_to_favorite, (dialog, cl) ->{
+                .setNegativeButton(R.string.movie_cancel_add_to_favorite, (dialog, cl) ->{ })
+                .setPositiveButton(R.string.add_to_favoritemovie, (dialog, cl) ->{
                 opener = new MovieMyOpenHelper(getContext());
                 db = opener.getWritableDatabase();
 

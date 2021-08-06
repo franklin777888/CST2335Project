@@ -104,7 +104,7 @@ public class MovieFavoriteFragment extends Fragment {
             itemView.setOnClickListener( click ->{
                 int chosenPosition = getAbsoluteAdapterPosition();
                 AlertDialog.Builder builder = new AlertDialog.Builder( getContext() );
-                builder.setMessage(R.string.view_or_delete )
+                builder.setMessage(R.string.view_or_delete_movie)
                         .setNegativeButton(R.string.delete_movie_from_favorite, (dialog, cl) ->{
                             MovieInfo removedMessage = messages.get(chosenPosition);
                             messages.remove(chosenPosition);
