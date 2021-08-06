@@ -1,4 +1,5 @@
 <resources>
+
     <!-- main -->
     <string name="app_name">G6</string>
     <string name="version">Version 1.0</string>
@@ -76,4 +77,7 @@
     <string name="delete_movie_from_favorite">Delete</string>
     <string name="view_or_delete_movie">Do you want to view detail or delete the movie?</string>
     <string name="view_detail_movie">View Detail</string>
+
+
+
 </resources>

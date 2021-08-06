@@ -1,5 +1,9 @@
+
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <resources>
+
     <!-- main -->
     <string name="app_name" translatable="false">G6</string>
     <string name="version">版本1.0</string>
@@ -76,4 +80,6 @@
     <string name="delete_movie_from_favorite">删除</string>
     <string name="view_or_delete_movie">请问您需要查看影片详情还是从收藏列表中删除影片?</string>
     <string name="view_detail_movie">查看详情</string>
+
+
 </resources>

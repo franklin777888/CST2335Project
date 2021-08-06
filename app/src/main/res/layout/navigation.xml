@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <!--    drawerlayout可以显示两个并列的layout，一个是没有draw之前的正常layout,一个是draw出来之后的比如下拉菜单的layout,这两个是二选一显示出来的-->
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.google.android.material.navigation.NavigationView
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:id="@+id/popout_menu"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/popout_header"
+            app:menu="@menu/main_activity_actions"
+            />
+    </androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>

@@ -1,5 +1,28 @@
 package algonquin.cst2335.cst2335project;
 
+
+        import androidx.appcompat.app.ActionBarDrawerToggle;
+        import androidx.appcompat.app.AlertDialog;
+        import androidx.appcompat.app.AppCompatActivity;
+        import androidx.appcompat.widget.Toolbar;
+        import androidx.core.view.GravityCompat;
+        import androidx.drawerlayout.widget.DrawerLayout;
+
+        import android.content.Context;
+        import android.content.Intent;
+        import android.content.SharedPreferences;
+        import android.os.Bundle;
+        import android.util.Log;
+        import android.view.Menu;
+        import android.view.MenuInflater;
+        import android.view.MenuItem;
+        import android.widget.Button;
+        import android.widget.EditText;
+        import android.widget.ImageView;
+        import android.widget.Toast;
+
+        import com.google.android.material.navigation.NavigationView;
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +44,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -50,6 +74,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent nextPage = new Intent(MainActivity.this, SoccerMainActivity.class);
             startActivity(nextPage);
         });
+        ImageView movieEntry = findViewById(R.id.movieMain);
+        movieEntry.setOnClickListener( clk->{
+            Intent nextPage = new Intent(MainActivity.this, MovieMainActivity.class);
+            startActivity(nextPage);
+        });
+        ImageView busEntry = findViewById(R.id.busMain);
+        busEntry.setOnClickListener( clk->{
+            Intent nextPage = new Intent(MainActivity.this, Navigation.class);
+            startActivity(nextPage);
+        });
+        ImageView carEntry = findViewById(R.id.carMain);
+        carEntry.setOnClickListener( clk->{
+            Intent nextPage = new Intent(MainActivity.this, CarMainActivity.class);
+            startActivity(nextPage);
+        });
+
 
         Log.w( "MainActivity", "In onCreate() - Loading Widgets" );
         Log.d( TAG, "Message");
@@ -81,7 +121,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.goBus:
                 message = getResources().getString(R.string.busPage);
-                startActivity(new Intent(MainActivity.this, BusMainActivity.class));
+
+                startActivity(new Intent(MainActivity.this, Navigation.class));
+
                 break;
             case R.id.goCar:
                 message = getResources().getString(R.string.carPage);
@@ -118,7 +160,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.goBus:
                 message= getResources().getString(R.string.busPage);
-                startActivity(new Intent(MainActivity.this, BusMainActivity.class));
+
+                startActivity(new Intent(MainActivity.this, Navigation.class));
+
                 break;
             case R.id.goCar:
                 message= getResources().getString(R.string.carPage);
