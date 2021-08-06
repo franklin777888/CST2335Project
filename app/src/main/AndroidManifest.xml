@@ -5,10 +5,17 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/OC_Transpo_App"
+        android:label="@string/app_name"
+        android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CST2335Project">
+        <activity android:name=".SoccerMainActivity" />
+        <activity android:name=".SoccerEmptyActivity" />
+        <activity android:name=".SoccerFavNews" />
+        <activity android:name=".BusMainActivity" />
+        <activity android:name=".CarMainActivity" />
+        <activity android:name=".MovieMainActivity" />
         <activity android:name=".OCTransport"> </activity>
         <activity android:name=".Navigation"> </activity>
         <activity android:name=".MainActivity">
