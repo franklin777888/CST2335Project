@@ -10,7 +10,7 @@
 
     <item
         android:id="@+id/help_menu"
-        android:icon="@drawable/help"
+        android:icon="@drawable/helpicon"
         android:title="Help Menu"
         app:showAsAction="always" />
 
