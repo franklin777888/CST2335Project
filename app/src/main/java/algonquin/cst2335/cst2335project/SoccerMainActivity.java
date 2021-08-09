@@ -163,7 +163,7 @@ public class SoccerMainActivity extends AppCompatActivity implements NavigationV
                 break;
             case R.id.goBus:
                 message = getResources().getString(R.string.busPage);
-                startActivity(new Intent(SoccerMainActivity.this, BusMainActivity.class));
+                startActivity(new Intent(SoccerMainActivity.this, Navigation.class));
                 break;
             case R.id.goCar:
                 message = getResources().getString(R.string.carPage);

@@ -2,11 +2,29 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/delete_sta"
-        android:icon="@drawable/finder_clear"
-        android:title="Clear Information"
-        app:showAsAction="always" />
+    <item android:id="@+id/goMovie"
+        android:orderInCategory="50"
+        android:icon="@drawable/movieicon"
+        app:showAsAction="always"
+        android:title="Movie" />
+
+    <item android:id="@+id/goBus"
+        android:orderInCategory="50"
+        android:icon="@drawable/busicon"
+        app:showAsAction="always"
+        android:title="Bus" />
+
+    <item android:id="@+id/goSoccer"
+        android:orderInCategory="50"
+        android:icon="@drawable/soccericon"
+        app:showAsAction="never"
+        android:title="Soccer" />
+
+    <item android:id="@+id/goCar"
+        android:orderInCategory="50"
+        android:icon="@drawable/caricon"
+        app:showAsAction="always"
+        android:title="Car" />
 
     <item
         android:id="@+id/favourites_sta"
@@ -15,7 +33,7 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/id_charg_help_menu"
+        android:id="@+id/charging_help_menu"
         android:icon="@drawable/charg_help"
         android:title="Help Menu"
         app:showAsAction="always" />

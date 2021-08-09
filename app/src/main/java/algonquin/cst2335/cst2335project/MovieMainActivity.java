@@ -86,7 +86,7 @@ public class MovieMainActivity extends AppCompatActivity {
                 break;
             case R.id.goBus:
                 message = getResources().getString(R.string.busPage);
-                startActivity(new Intent(MovieMainActivity.this, BusMainActivity.class));
+                startActivity(new Intent(MovieMainActivity.this, Navigation.class));
                 break;
             case R.id.goCar:
                 message = getResources().getString(R.string.carPage);

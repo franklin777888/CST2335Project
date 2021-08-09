@@ -78,6 +78,32 @@
     <string name="view_or_delete_movie">Do you want to view detail or delete the movie?</string>
     <string name="view_detail_movie">View Detail</string>
 
+    <!--Car-->
+    <string name="charging_station_add_favorite">Do you want to add this station to your favourite?</string>
+    <string name="station_cancel_favorite">Cancel</string>
+    <string name="station_add_favorite">Add</string>
+    <string name="station_dupulicate_add">Station already in your favourite list.</string>
+    <string name="undo_save_sation">Undo</string>
+
+    <string name="finder_help">Electric car charging finder help menu</string>
+    <string name="finder_help_menu">
+        Please follow the steps for the App:
+        1.Input a latitude and a longitude number
+        2.Click on "Charging station near by" button
+        3.Choose one of the station name for detail information
+        4.You can save your favourite station into your favourite folder
+        5.You can delete your saved station in favourite folder
+    </string>
+    charging_station_not_found
+    <string name="charging_station_not_found">No charging station found</string>
+    <string name="saved_Station_Info">This Charging Station Information are saved</string>
+    <string name="loading_list">Getting Charging Station List</string>
+    <string name="loading">We are going to get a list of Electric car charging stations near by.</string>
+    <string name="invalid">Invalid input</string>
+    <string name="inputvalidnum">Please input two numbers in the text field</string>
+    <string name="deletequestion">Do you want to delete this station from favourite list: </string>
+    <string name="question">Question: </string>
+
 
 
 </resources>

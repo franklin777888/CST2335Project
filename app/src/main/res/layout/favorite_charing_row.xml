@@ -2,17 +2,25 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/FinderListRow"
+    android:id="@+id/favChargListRow"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/locationTitle"
-        android:layout_width="match_parent"
+        android:id="@+id/favChargItem"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Location Name"
-        android:textSize="20sp"
+        android:layout_marginTop="24dp"
+        android:text="Favorite Charging station"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/deleteBtn"
+        android:layout_width="95dp"
+        android:layout_height="41dp"
+        android:text="DELETE"
+        app:layout_constraintBottom_toBottomOf="@+id/favChargItem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/favChargItem" />
 </androidx.constraintlayout.widget.ConstraintLayout>

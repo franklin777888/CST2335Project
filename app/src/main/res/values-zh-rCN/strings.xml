@@ -81,4 +81,28 @@
     <string name="view_detail_movie">查看详情</string>
 
 
+    <!--car charging finder-->
+    <string name="charging_station_add_favorite">添加这个充电站到收藏夹吗？</string>
+    <string name="station_cancel_favorite">取消收藏</string>
+    <string name="station_add_favorite">添加收藏</string>
+    <string name="station_dupulicate_add">车站已在收藏夹</string>
+    <string name="undo_save_sation">撤销收藏</string>
+    <string name="finder_help">电动车站查询软件指南</string>
+    <string name="finder_help_menu">
+        请根据一下提示进行操作：
+        1.在输入框输入经度和维度
+        2.点击搜索附近充电站按钮
+        3.可以点击其中的一个充电站看详细的内容
+        4.在详细界面可以选择收藏你喜欢的车站
+        5.在收藏文件夹里面可以删除已经收藏的车站
+    </string>
+    <string name="charging_station_not_found">没有找到附近的充电车站</string>
+    <string name="saved_Station_Info">这个充电站的信息已保存到了收藏夹</string>
+    <string name="loading_list">正在下载充电站信息</string>
+    <string name="loading">将会显示出附近的充电站菜单</string>
+    <string name="invalid">无效输入</string>
+    <string name="inputvalidnum">请输入任意两个数字</string>
+    <string name="deletequestion">你确定要删掉这个收藏的充电站信息吗？ </string>
+    <string name="question">请选择问题答案: </string>
+
 </resources>

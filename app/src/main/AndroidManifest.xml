@@ -16,10 +16,14 @@
         <activity android:name=".MovieMainActivity" />
         <activity android:name=".OCTransport"> </activity>
         <activity android:name=".Navigation"> </activity>
+        <activity android:name=".CarEmptyActivity" />
+        <activity android:name=".ChargFavActivey" />
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
     </application>
