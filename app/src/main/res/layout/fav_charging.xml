@@ -9,7 +9,7 @@
         android:id="@+id/fav_charg_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MY FAVAOURITE CHARGING STATIONS LIST"
+        android:text="@string/fav_charg_page"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

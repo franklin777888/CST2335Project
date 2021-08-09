@@ -51,22 +51,22 @@ public class ChargingDetailFragment extends Fragment {
 
         dataFromEmp = getArguments();
 
-        TextView lacationView = detailsView.findViewById(R.id.loacationTitle);
+        TextView locationView = detailsView.findViewById(R.id.loacationTitle);
         TextView latitudeView = detailsView.findViewById(R.id.latitudeView);
         TextView longitudeView = detailsView.findViewById(R.id.longitudeView);
         TextView telNumView = detailsView.findViewById(R.id.telView);
 
         locationDt = dataFromEmp.getString(CarMainActivity.location_title);
-        lacationView.setText("Location Tile: "+ locationDt);
+        locationView.setText(getResources().getString(R.string.locat_title)+ locationDt);
 
         latitudeDt = dataFromEmp.getString(CarMainActivity.latitude_dt);
-        latitudeView.setText("Latitude: " + latitudeDt);
+        latitudeView.setText(getResources().getString(R.string.charg_lat) + latitudeDt);
 
         longitudeDt =  dataFromEmp.getString(CarMainActivity.longitude_dt);
-        longitudeView.setText("Longitude: " + longitudeDt);
+        longitudeView.setText(getResources().getString(R.string.charg_long) + longitudeDt);
 
         telNumDt = dataFromEmp.getString(CarMainActivity.telNumber_dt);
-        telNumView.setText("Telphone Number: " + telNumDt);
+        telNumView.setText(getResources().getString(R.string.tel_num) + telNumDt);
 
 
         addBtn = detailsView.findViewById(R.id.addButton);

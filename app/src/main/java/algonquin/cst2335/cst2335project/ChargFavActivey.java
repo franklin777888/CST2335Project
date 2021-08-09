@@ -122,9 +122,9 @@ public class ChargFavActivey extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ChargFavActivey.this);
                 builder.setMessage(R.string.deletequestion)
                         .setTitle(R.string.question)
-                        .setNegativeButton("No", (dialog, cl) -> {
+                        .setNegativeButton(R.string.charg_no, (dialog, cl) -> {
                         })
-                        .setPositiveButton("Yes", (dialog, cl) -> {
+                        .setPositiveButton(R.string.charg_yes, (dialog, cl) -> {
                             //position = getAbsoluteAdapterPosition();
                             ChargingInfo deleteMessage = favouriteInfo.get(clickedPosition);
                             favouriteInfo.remove(clickedPosition);
@@ -133,8 +133,8 @@ public class ChargFavActivey extends AppCompatActivity {
                             chargdb.delete(ChargOpenHelper.TABLE_NAME, "_id=?", new String[]{Long.toString(deleteMessage.getId())});
 
 
-                            Snackbar.make(deleteBtn, "You deleted this saved station: " + deleteMessage.getLocationTitle(), Snackbar.LENGTH_LONG)
-                                    .setAction("Undo", clk -> {
+                            Snackbar.make(deleteBtn, getResources().getString(R.string.charg_deleted) + deleteMessage.getLocationTitle(), Snackbar.LENGTH_LONG)
+                                    .setAction(R.string.charg_undo, clk -> {
                                         favouriteInfo.add(clickedPosition, deleteMessage);
                                         adt.notifyItemRemoved(clickedPosition);
 

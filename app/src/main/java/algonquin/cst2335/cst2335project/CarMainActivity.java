@@ -311,7 +311,7 @@ public class CarMainActivity extends AppCompatActivity {
          */
         @Override
         public void onBindViewHolder(ChargRowViews holder, int position) {
-            holder.locationName.setText("Charging station: " + locationFound.get(position).getLocationTitle());
+            holder.locationName.setText(getResources().getString(R.string.charg_sta) + locationFound.get(position).getLocationTitle());
         }
 
         /**

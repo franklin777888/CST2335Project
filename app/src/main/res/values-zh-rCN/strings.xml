@@ -104,5 +104,32 @@
     <string name="inputvalidnum">请输入任意两个数字</string>
     <string name="deletequestion">你确定要删掉这个收藏的充电站信息吗？ </string>
     <string name="question">请选择问题答案: </string>
+    <string name="latitudetext">请在此处输入纬度</string>
+    <string name="Longitudetext">请在此处输入经度</string>
+    <string name="latitude_input">输入纬度 </string>
+    <string name="Longitude_input">输入经度</string>
+    <string name="charg_searchBtn">查询附近车站</string>
+    <string name="charg_title">电动车充电站应用</string>
+    <string name="charg_author">作者：李梦莹</string>
+    <string name="charg_version">版本1.0</string>
+    <string name="charg_fav">收藏夹</string>
+    <string name="charg_help_menu">帮助菜单</string>
+    <string name="charg_Movie">电影</string>
+    <string name="charg_Bus">公交站</string>
+    <string name="charg_Scoccer">足球</string>
+    <string name="charg_Car">电动车</string>
+    <string name="charg_sta">充电站：</string>
+    <string name="locat_title">充电站名：</string>
+    <string name="charg_lat">纬度：</string>
+    <string name="charg_long">经度：</string>
+    <string name="tel_num">电话号码：</string>
+    <string name="directioin">谷歌地图</string>
+    <string name="add_fav_btn">添加到我的收藏夹</string>
+    <string name="fav_charg_page">我的收藏单</string>
+    <string name="charg_delete">删除</string>
+    <string name="charg_yes">是</string>
+    <string name="charg_no">不是</string>
+    <string name="charg_undo">取消</string>
+    <string name="charg_deleted">你删除了这个收藏的充电站</string>
 
 </resources>

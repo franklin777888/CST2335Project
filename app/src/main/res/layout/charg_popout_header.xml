@@ -8,15 +8,15 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Electric Car Charging Station Finder App"/>
+        android:text="@string/charg_title"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Author:Mengying Li"/>
+        android:text="@string/charg_author"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Version:1.0 "/>
+        android:text="@string/charg_version"/>
 </LinearLayout>

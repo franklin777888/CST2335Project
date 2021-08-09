@@ -30,7 +30,7 @@
             android:id="@+id/longitude"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter Longitude here"
+            android:text="@string/Longitudetext"
             android:textColor="#090909"
             app:layout_constraintStart_toStartOf="@+id/longitudeTextField"
             app:layout_constraintTop_toBottomOf="@+id/cartoolbar" />
@@ -39,7 +39,7 @@
             android:id="@+id/latitude"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Enter Latitude here"
+            android:text="@string/latitudetext"
             android:textColor="#090909"
             app:layout_constraintStart_toStartOf="@+id/cartoolbar"
             app:layout_constraintTop_toBottomOf="@+id/cartoolbar" />
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="9"
-            android:hint="Type a latitude here"
+            android:hint="@string/latitude_input"
             android:inputType="numberSigned"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/latitude" />
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="9"
-            android:hint="Type a longitude here"
+            android:hint="@string/Longitude_input"
             android:inputType="numberSigned"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/longitude" />
@@ -70,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
-            android:text="CHARGING STATIONS NEAR BY"
+            android:text="@string/charg_searchBtn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/latitudeTextField" />
 

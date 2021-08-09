@@ -103,6 +103,36 @@
     <string name="inputvalidnum">Please input two numbers in the text field</string>
     <string name="deletequestion">Do you want to delete this station from favourite list: </string>
     <string name="question">Question: </string>
+    <string name="latitudetext">Enter Latitude here</string>
+    <string name="Longitudetext">Enter Longitude here</string>
+    <string name="latitude_input">Type a latitude here</string>
+    <string name="Longitude_input">Type a longitude here</string>
+    <string name="charg_searchBtn">CHARGING STATIONS NEAR BY</string>
+    <string name="charg_title">Electric Car Charging Station Finder App</string>
+    <string name="charg_author">Author:Mengying Li</string>
+    <string name="charg_version">Version:1.0</string>
+    <string name="charg_fav">Favourites</string>
+    <string name="charg_help_menu">Help Menu</string>
+    <string name="charg_Movie">Movie</string>
+    <string name="charg_Bus">Bus</string>
+    <string name="charg_Scoccer">Soccer</string>
+    <string name="charg_Car">Car</string>
+    <string name="charg_sta">Charging statioin:</string>
+    <string name="locat_title">Location Title: </string>
+    <string name="charg_lat">Latitude: </string>
+    <string name="charg_long">Longitude: </string>
+    <string name="tel_num">Contact Phone Number: </string>
+    <string name="directioin">Get direction on Google Map</string>
+    <string name="add_fav_btn">ADD TO MY FAVOURITE</string>
+    <string name="fav_charg_page">MY FAVAOURITE CHARGING STATIONS LIST</string>
+    <string name="charg_delete">DELETE</string>
+    <string name="charg_yes">YES</string>
+    <string name="charg_no">NO</string>
+    <string name="charg_undo">UNDO</string>
+    <string name="charg_deleted">You deleted this saved station</string>
+
+
+
 
 
 
